@@ -5,7 +5,7 @@ import Form from "@/pages/Form.vue";
 const routes = [
     {
         path: "/" ,
-        redirect: "/Home"
+        redirect: "/Form"
     },
     {
         path: "/Home" ,
