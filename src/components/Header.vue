@@ -27,13 +27,6 @@
   flex-grow: 1;
 }
 
-.header {
-  position: fixed;
-  left: 10Px;
-  right: 10Px;
-  top: 0;
-}
-
 .title {
   font-weight: bold;
   font-size: 20px;
@@ -41,7 +34,7 @@
 
 .back {
   position: relative;
-  left: 14Px;
+  left: 20Px;
   top: 30%;
 }
 </style>

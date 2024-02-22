@@ -141,16 +141,8 @@ const spanMethod = ({ row, column, rowIndex, columnIndex }) => {
 
 </script>
 <style lang="less" scoped>
-.tableQualityProject {
-  height: 100vh;
-  width: 100%;
-  overflow: auto;
-  background-color: #f2f2f2;
-  h1 {}
-}
 .tableWrap {
-  width: 100%;
-  margin: 0 auto;
+  max-width: 1000Px;
   /deep/ .el-table__header th {
     background-color: #409eff!important ; /* 设置表头颜色 */
     color: #fff; /* 设置表头文字颜色 */
