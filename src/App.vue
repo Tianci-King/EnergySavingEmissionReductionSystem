@@ -4,12 +4,14 @@ import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <el-container class="container">
-    <el-header>
-      <Header></Header>
-    </el-header>
-    <router-view />
-  </el-container>
+  <a-layout class="container">
+    <a-layout-header>
+      <Header />
+    </a-layout-header>
+    <a-layout-content>
+      <RouterView />
+    </a-layout-content>
+  </a-layout>
 </template>
 
 <style>

@@ -3,22 +3,19 @@
 </style>
 
 <template>
-  <el-menu
+  <a-menu
       default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
   >
-  <el-menu-item-group title="">
-    <el-menu-item index="1-1">全部行业</el-menu-item>
-    <el-menu-item index="1-2">能源行业</el-menu-item>
-    <el-menu-item index="1-3">制造业</el-menu-item>
-    <el-menu-item index="1-4">商业</el-menu-item>
-    <el-menu-item index="1-5">农林牧渔</el-menu-item>
-    <el-menu-item index="1-6">建筑业</el-menu-item>
-    <el-menu-item index="1-7">采矿业</el-menu-item>
-  </el-menu-item-group>
-  </el-menu>
+  <a-menu-item-group title="">
+    <a-menu-item key="1">全部行业</a-menu-item>
+    <a-menu-item key="2">能源行业</a-menu-item>
+    <a-menu-item key="3">制造业</a-menu-item>
+    <a-menu-item key="4">商业</a-menu-item>
+    <a-menu-item key="5">农林牧渔</a-menu-item>
+    <a-menu-item key="6">建筑业</a-menu-item>
+    <a-menu-item key="7">采矿业</a-menu-item>
+  </a-menu-item-group>
+  </a-menu>
 </template>
 
 <script setup lang="ts">

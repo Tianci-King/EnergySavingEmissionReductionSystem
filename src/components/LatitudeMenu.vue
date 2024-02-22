@@ -15,30 +15,29 @@ const handleClose = (key: string, keyPath: string[]) => {
 </script>
 
 <template>
-  <el-menu
+  <a-menu
       default-active="2"
-      class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
   >
-    <el-sub-menu index="1">
+    <a-sub-menu index="1">
       <template #title>
-        <el-icon><DataLine /></el-icon>
+        <icon-command />
         <span>核算维度</span>
       </template>
-      <el-menu-item-group title="">
-        <el-menu-item index="1-1">固定燃烧</el-menu-item>
-        <el-menu-item index="1-2">移动燃烧</el-menu-item>
-        <el-menu-item index="1-3">电热间排放</el-menu-item>
-        <el-menu-item index="1-4">能源加工转换</el-menu-item>
-        <el-menu-item index="1-5">工艺排放</el-menu-item>
-        <el-menu-item index="1-6">差旅通勤</el-menu-item>
-        <el-menu-item index="1-7">新能源减排</el-menu-item>
-        <el-menu-item index="1-8">土地利用碳汇</el-menu-item>
-        <el-menu-item index="1-9">农林牧鱼业</el-menu-item>
-      </el-menu-item-group>
-    </el-sub-menu>
-  </el-menu>
+      <a-menu-item-group title="">
+        <a-menu-item key="1-1">固定燃烧</a-menu-item>
+        <a-menu-item key="1-2">移动燃烧</a-menu-item>
+        <a-menu-item key="1-3">电热间排放</a-menu-item>
+        <a-menu-item key="1-4">能源加工转换</a-menu-item>
+        <a-menu-item key="1-5">工艺排放</a-menu-item>
+        <a-menu-item key="1-6">差旅通勤</a-menu-item>
+        <a-menu-item key="1-7">新能源减排</a-menu-item>
+        <a-menu-item key="1-8">土地利用碳汇</a-menu-item>
+        <a-menu-item key="1-9">农林牧鱼业</a-menu-item>
+      </a-menu-item-group>
+    </a-sub-menu>
+  </a-menu>
 </template>
 
 <style scoped>

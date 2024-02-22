@@ -1,22 +1,22 @@
 <template>
-  <el-menu
-      :default-active="activeIndex"
-      class="header"
-      mode="horizontal"
-      :ellipsis="false"
-      @select="handleSelect"
-  >
-    <el-page-header class="back" @back="onBack"></el-page-header>
-    <el-menu-item index="0"><div>
-      <span class="title"> “碳足迹”节能减排系统 </span>
-    </div></el-menu-item>
-    <div class="flex-grow" />
-    <el-sub-menu index="2">
-      <template #title>导航</template>
-      <el-menu-item index="2-1" @click="pushToSystem">碳足迹计算</el-menu-item>
-      <el-menu-item index="2-2" @click="pushToShow">数据可视化大屏</el-menu-item>
-    </el-sub-menu>
-  </el-menu>
+  <div class="header">
+    <a-page-header
+        :style="{ background: 'var(--color-bg-2)',height:'100%',}"
+        subtitle="ArcoDesign Vue 2.0"
+        class="header"
+    >
+      <template #title>
+        <span></span>
+        <a-typography-title :heading="3">ArcoDesign</a-typography-title>
+      </template>
+      <template #back-icon>
+        <icon-left style="transform: scale(1.2)"/>
+      </template>
+      <template #extra>
+
+      </template>
+    </a-page-header>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -24,18 +24,10 @@
 </script>
 
 <style scoped>
-.flex-grow {
-  flex-grow: 1;
-}
-
-.title {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.back {
-  position: relative;
-  left: 20Px;
-  top: 30%;
+.header{
+  display: flex;
+  align-items: center;
+  height: 120px;
+  border-bottom: 1px solid var(--color-border);
 }
 </style>
