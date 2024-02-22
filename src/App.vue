@@ -4,7 +4,7 @@ import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <el-container>
+  <el-container class="container">
     <el-header>
       <Header></Header>
     </el-header>
@@ -12,6 +12,14 @@ import Header from "@/components/Header.vue";
   </el-container>
 </template>
 
-<style scoped>
-
+<style>
+.container{
+  height: 100vh;
+  width: 100%;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 </style>
