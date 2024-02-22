@@ -2,18 +2,16 @@
   <div class="header">
     <a-page-header
         :style="{ background: 'var(--color-bg-2)',height:'100%',}"
-        subtitle="ArcoDesign Vue 2.0"
         class="header"
     >
       <template #title>
-        <span></span>
-        <a-typography-title :heading="3">ArcoDesign</a-typography-title>
+        <span style="font-size: xx-large">节能减排碳足迹</span>
+      </template>
+      <template #subtitle>
+        <span style="font-size: large">企业碳足迹计算系统</span>
       </template>
       <template #back-icon>
         <icon-left style="transform: scale(1.2)"/>
-      </template>
-      <template #extra>
-
       </template>
     </a-page-header>
   </div>

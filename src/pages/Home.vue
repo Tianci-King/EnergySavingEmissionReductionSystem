@@ -1,34 +1,29 @@
 <style scoped>
-.ContentPanel{
-  display: flex;
+.Menu {
+  height: 100%;
+}
+
+.sider{
+  padding:20px 0  20px  20px;
 }
 </style>
 
 
 <template>
-  <el-container>
-    <el-aside width="200px">
+  <a-layout style="height: 100%;background: #f2f3f5;" >
+    <a-layout-sider class="sider" :width="250">
       <HomeMenu class="Menu"/>
-    </el-aside>
-    <el-main class="ContentPanel">
-      <div style="width: 50%">
-        <trade-card v-for="trade in tradeList"></trade-card>
-      </div>
-      <div style="width: 50%">
+    </a-layout-sider>
+    <a-layout-content>
 
-      </div>
-    </el-main>
-  </el-container>
+    </a-layout-content>
+  </a-layout>
 </template>
 
 <script setup lang="ts">
 
 import HomeMenu from "@/components/HomeMenu.vue";
-import emitter from "@/utils/mitt.ts";
-import TradeCard from "@/components/Latitude/tradeCard.vue";
 
-emitter.on("tradeList", (tradeList: any) => {
-  tradeList.value = tradeList;
-});
+
 
 </script>
