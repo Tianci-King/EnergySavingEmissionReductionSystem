@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <LatitudeMenu  class="Menu" />
       </el-aside>
-      <el-main class="Form">
+      <el-main>
         <StationaryCombustion />
       </el-main>
     </el-container>
@@ -13,11 +13,9 @@
 
 <style scoped>
 .Menu {
-  position: fixed;
-  left: 0;
-  top: 70Px;
   min-height: 100%;
 }
+
 
 </style>
 
