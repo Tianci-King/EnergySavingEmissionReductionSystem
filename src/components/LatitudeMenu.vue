@@ -23,34 +23,21 @@ const handleClose = (key: string, keyPath: string[]) => {
   >
     <el-sub-menu index="1">
       <template #title>
-        <el-icon><location /></el-icon>
+        <el-icon><DataLine /></el-icon>
         <span>核算维度</span>
       </template>
-      <el-menu-item-group title="Group One">
+      <el-menu-item-group title="">
         <el-menu-item index="1-1">固定燃烧</el-menu-item>
-        <el-menu-item index="1-2">能源加工转换</el-menu-item>
-        <el-menu-item index="1-3">工艺排放</el-menu-item>
+        <el-menu-item index="1-2">移动燃烧</el-menu-item>
+        <el-menu-item index="1-3">电热间排放</el-menu-item>
+        <el-menu-item index="1-4">能源加工转换</el-menu-item>
+        <el-menu-item index="1-5">工艺排放</el-menu-item>
+        <el-menu-item index="1-6">差旅通勤</el-menu-item>
+        <el-menu-item index="1-7">新能源减排</el-menu-item>
+        <el-menu-item index="1-8">土地利用碳汇</el-menu-item>
+        <el-menu-item index="1-9">农林牧鱼业</el-menu-item>
       </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu>
     </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <el-icon><document /></el-icon>
-      <span>Navigator Three</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon><setting /></el-icon>
-      <span>Navigator Four</span>
-    </el-menu-item>
   </el-menu>
 </template>
 

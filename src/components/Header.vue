@@ -6,6 +6,7 @@
       :ellipsis="false"
       @select="handleSelect"
   >
+    <el-page-header class="back" @back="onBack"></el-page-header>
     <el-menu-item index="0"><div>
       <span class="title"> “碳足迹”节能减排系统 </span>
     </div></el-menu-item>
@@ -28,15 +29,19 @@
 
 .header {
   position: fixed;
-  left: 2%;
-  right: 2%;
+  left: 10Px;
+  right: 10Px;
   top: 0;
-
-  background-color: ;
 }
 
 .title {
   font-weight: bold;
   font-size: 20px;
+}
+
+.back {
+  position: relative;
+  left: 14Px;
+  top: 30%;
 }
 </style>
