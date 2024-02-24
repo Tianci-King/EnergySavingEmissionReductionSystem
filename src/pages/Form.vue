@@ -1,21 +1,15 @@
 <template>
-  <div>
-    <el-container>
-      <el-aside width="200px">
-        <LatitudeMenu  class="Menu" />
-      </el-aside>
-      <el-main>
+    <a-layout>
+      <a-layout-sider>
+        <LatitudeMenu />
+      </a-layout-sider>
+      <a-layout-content>
         <StationaryCombustion />
-      </el-main>
-    </el-container>
-  </div>
+      </a-layout-content>
+    </a-layout>
 </template>
 
 <style scoped>
-.Menu {
-  min-height: 100%;
-}
-
 
 </style>
 
