@@ -9,7 +9,8 @@
 .mainContent{
   display: flex;
   align-items: center;
-  padding: 50px;
+  padding: 30px;
+  max-height: 930px;
 }
 .tradeContent{
   width: 55%;
@@ -46,18 +47,23 @@
       <HomeMenu class="Menu" :menu-list="menuList"/>
     </a-layout-sider>
     <a-layout-content class="mainContent">
-    <div class="tradeContent">
-      <a-typography-title
-          :heading="5"
-          style="font-weight: bold"
-      >
-        请选择您的行业
-      </a-typography-title>
-      <a-radio-group v-model="trade" class="tradeCardBox">
-        <trade-card v-for="(item,index) in tradeList" :key="index" :trade="item"></trade-card>
-      </a-radio-group>
-      {{trade}}
-    </div>
+        <div class="tradeContent">
+          <a-scrollbar style="max-height: 900px;overflow: auto;padding-bottom: 40px">
+            <a-radio-group v-model="trade" style="max-height: 100%">
+              <div v-for="(trade) in showTradeList">
+                <a-typography-title
+                    :heading="5"
+                    style="font-weight: bold"
+                >
+                  {{trade.trade}}
+                </a-typography-title>
+                <div class="tradeCardBox">
+                  <trade-card v-for="(item,index) in trade.children" :key="index" :trade="item"></trade-card>
+                </div>
+              </div>
+            </a-radio-group>
+          </a-scrollbar>
+        </div>
     <div class="latitudeContent">
       <a-typography-title
           :heading="5"
@@ -99,38 +105,114 @@ const trade=ref("")
 
 const tradeList=[
   {
-    name: "固定燃烧",
-    img:"public/固定燃烧.png",
+    trade:"能源行业",
+    children:[
+      {
+        name: "石油和天然气开采业",
+        img:"public/trade/石油天然气开采业.jpg",
+      },
+      {
+        name: "煤炭开采和洗选业",
+        img:"public/trade/煤炭开采和洗选业.jpg",
+      },
+      {
+        name: "电力、热力的生产和供应业",
+        img:"public/trade/电力、热力的生产和供应业.png",
+      },
+      {
+        name: "燃气生产和供应业",
+        img:"public/trade/燃气生产和供应业.jpg",
+      }
+    ]
   },
   {
-    name: "移动燃烧",
-    img:"public/移动燃烧.png",
+    trade:"制造业",
+    children:[
+      {
+        name: "农副食品加工业",
+        img:"public/trade/农副食品加工业.jpg",
+      },
+      {
+        name: "饮料制造业",
+        img:"public/trade/饮料制造业.jpg",
+      },
+      {
+        name: "烟草制品业",
+        img:"public/trade/烟草制品业.jpg",
+      },
+      {
+        name: "纺织服装、鞋、帽制造业",
+        img:"public/trade/纺织服装、鞋、帽制造业.jpg",
+      },
+      {
+        name: "皮革、毛皮、羽毛(绒)及其制品业",
+        img:"public/trade/皮革、毛皮、羽毛(绒)及其制品业.jpg",
+      },
+      {
+        name: "木材加工及木、竹、藤、棕、草制品业",
+        img:"public/trade/木材加工及木、竹、藤、棕、草制品业.jpg",
+      }
+    ]
   },
   {
-    name: "电热间接排放",
-    img:"public/电热间接排放.png",
+    trade:"商业",
+    children:[
+      {
+        name: "交通运输、仓储及邮电通迅业",
+        img:"public/trade/交通运输、仓储及邮电通迅业.jpg",
+      },
+      {
+        name: "批发和零售贸易业、餐饮业",
+        img:"public/trade/批发和零售贸易业、餐饮业.jpg",
+      },
+      {
+        name: "其他服务业",
+        img:"public/trade/其他服务业.jpg",
+      }
+    ]
   },
   {
-    name: "能源加工转换",
-    img:"public/能源加工转换.png",
+    trade: "农林牧渔",
+    children:[
+      {
+        name: "农林牧渔水利业",
+        img:"public/trade/农林牧渔水利业.png",
+      }
+    ]
   },
   {
-    name: "工艺排放",
-    img:"public/工艺排放.png",
+    trade: "建筑业",
+    children:[
+      {
+        name: "建筑行业",
+        img:"public/trade/建筑业.jpg",
+      }
+    ]
   },
   {
-    name: "差旅通勤",
-    img:"public/差旅通勤.png",
-  },
-  {
-    name: "新能源减排",
-    img:"public/新能源减排.png",
-  },
-  {
-    name: "土地利用碳汇",
-    img:"public/土地利用碳汇.png",
+    trade: "采矿业",
+    children:[
+      {
+        name: "黑色金属矿采选业",
+        img:"public/trade/黑色金属矿采选业.jpg",
+      },
+      {
+        name: "有色金属矿采选业",
+        img:"public/trade/有色金属矿采选业.jpg",
+      },
+      {
+        name: "非金属矿采选业",
+        img:"public/trade/非金属矿采选业.jpg",
+      },
+      {
+        name: "其他采矿业",
+        img:"public/trade/其他采矿业.jpg",
+      }
+    ]
   }
 ]
+const showTradeList = ref(tradeList);
+
 const menuList = [
   {
     key: "1",
@@ -199,25 +281,25 @@ const latitudeList = [
 emitter.on("changeMenu", (key: string) => {
   switch (key) {
     case "1":
-      console.log("全部行业");
+      showTradeList.value = tradeList;
       break;
     case "2":
-      console.log("能源行业");
+      showTradeList.value = tradeList.filter((item) => item.trade === "能源行业");
       break;
     case "3":
-      console.log("制造业");
+      showTradeList.value = tradeList.filter((item) => item.trade === "制造业");
       break;
     case "4":
-      console.log("商业");
+      showTradeList.value = tradeList.filter((item) => item.trade === "商业");
       break;
     case "5":
-      console.log("农林牧渔");
+      showTradeList.value = tradeList.filter((item) => item.trade === "农林牧渔");
       break;
     case "6":
-      console.log("建筑业");
+      showTradeList.value = tradeList.filter((item) => item.trade === "建筑业");
       break;
     case "7":
-      console.log("采矿业");
+      showTradeList.value = tradeList.filter((item) => item.trade === "采矿业");
       break;
   }
 });

@@ -31,12 +31,15 @@
   clip-path:  polygon(70% 0,100% 0,100% 100%,40% 100%);
 }
 .title{
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  position: absolute;
   width: 150px;
   left:calc(50% - 75px);
-  height: 10px;
-  top: -65px;
+  height: 50px;
+  top: calc(50% - 25px);
   font-size: large;
   user-select: none;
   font-weight: bold;
@@ -81,8 +84,8 @@
         </div>
       </template>
     </a-radio>
-    <a-radio :value="trade.name">
-      <div>{{trade.name}}</div>
+    <a-radio :value="trade.name" style="margin-top: 10px">
+      <div style="width: 190px;color: #252525">{{trade.name}}</div>
     </a-radio>
   </div>
 </template>

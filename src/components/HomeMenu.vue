@@ -21,6 +21,7 @@
   <a-menu
       class="menu"
       @menu-item-click="handleClick"
+      :default-selected-keys="['1']"
   >
     <a-menu-item-group class="menuItemGroup">
       <span style="font-size: x-large;font-weight: bold;color: #252525" >
