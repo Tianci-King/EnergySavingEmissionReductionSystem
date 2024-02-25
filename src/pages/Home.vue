@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   padding: 30px;
-  max-height: 930px;
+  height: 91vh;
 }
 .tradeContent{
   width: 55%;
@@ -48,7 +48,7 @@
     </a-layout-sider>
     <a-layout-content class="mainContent">
         <div class="tradeContent">
-          <a-scrollbar style="max-height: 900px;overflow: auto;padding-bottom: 40px">
+          <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
             <a-radio-group v-model="trade" style="max-height: 100%">
               <div v-for="(trade) in showTradeList">
                 <a-typography-title

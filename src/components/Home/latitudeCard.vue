@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
 }
-.checkBox{
+.checkBox {
   padding-top: 10px;
 }
 .choose{
@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-
 import {ref} from "vue";
 
 const props = defineProps({

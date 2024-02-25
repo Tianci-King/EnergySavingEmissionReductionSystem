@@ -1,45 +1,43 @@
-<script setup lang="ts">
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-}  from "@element-plus/icons-vue";
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+<style scoped>
+.menu{
+  height: 100%;
+  font-size: large;
+  background-color: #ffffff;
 }
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+.menu .menuItem{
+  background-color: #ffffff;
+  transform: scale(1.075);
+  font-size: medium;
+  border-radius:15px 0 0 15px ;
 }
-</script>
+.menuItemGroup{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+</style>
 
 <template>
   <a-menu
-      default-active="2"
-      @open="handleOpen"
-      @close="handleClose"
+      class="menu"
   >
-    <a-sub-menu index="1">
-      <template #title>
-        <icon-command />
-        <span>核算维度</span>
-      </template>
-      <a-menu-item-group title="">
-        <a-menu-item key="1-1">固定燃烧</a-menu-item>
-        <a-menu-item key="1-2">移动燃烧</a-menu-item>
-        <a-menu-item key="1-3">电热间排放</a-menu-item>
-        <a-menu-item key="1-4">能源加工转换</a-menu-item>
-        <a-menu-item key="1-5">工艺排放</a-menu-item>
-        <a-menu-item key="1-6">差旅通勤</a-menu-item>
-        <a-menu-item key="1-7">新能源减排</a-menu-item>
-        <a-menu-item key="1-8">土地利用碳汇</a-menu-item>
-        <a-menu-item key="1-9">农林牧鱼业</a-menu-item>
-      </a-menu-item-group>
-    </a-sub-menu>
+    <a-menu-item-group class="menuItemGroup">
+      <span style="font-size: 30px;font-weight: bold;color: #252525" >
+        核算维度
+      </span>
+      <a-menu-item class="menuItem" key="1"><icon-apps />固定燃烧</a-menu-item>
+      <a-menu-item class="menuItem" key="2"><icon-apps />移动燃烧</a-menu-item>
+      <a-menu-item class="menuItem" key="3"><icon-apps />电热间排放</a-menu-item>
+      <a-menu-item class="menuItem" key="4"><icon-apps />能源加工转换</a-menu-item>
+      <a-menu-item class="menuItem" key="5"><icon-apps />工艺排放</a-menu-item>
+      <a-menu-item class="menuItem" key="6"><icon-apps />差旅通勤</a-menu-item>
+      <a-menu-item class="menuItem" key="7"><icon-apps />新能源减排</a-menu-item>
+      <a-menu-item class="menuItem" key="8"><icon-apps />土地利用碳汇</a-menu-item>
+      <a-menu-item class="menuItem" key="9"><icon-apps />农林牧鱼业</a-menu-item>
+    </a-menu-item-group>
   </a-menu>
 </template>
 
-<style scoped>
+<script setup lang="ts">
 
-</style>
+</script>
