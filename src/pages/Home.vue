@@ -15,6 +15,14 @@
   width: 55%;
   height: 100%;
 }
+.tradeCardBox{
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding-top: 35px;
+}
 .latitudeContent{
   background: #e1e1e1;
   width: 45%;
@@ -25,8 +33,10 @@
 .latitudeCardBox{
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap:20px;
   justify-content: flex-start;
+  align-content: flex-start;
+  height: 85%;
 }
 </style>
 
@@ -36,12 +46,41 @@
       <HomeMenu class="Menu" :menu-list="menuList"/>
     </a-layout-sider>
     <a-layout-content class="mainContent">
-    <div class="tradeContent"></div>
+    <div class="tradeContent">
+      <a-typography-title
+          :heading="5"
+          style="font-weight: bold"
+      >
+        请选择您的行业
+      </a-typography-title>
+      <a-radio-group v-model="trade" class="tradeCardBox">
+        <trade-card v-for="(item,index) in tradeList" :key="index" :trade="item"></trade-card>
+      </a-radio-group>
+      {{trade}}
+    </div>
     <div class="latitudeContent">
-      <a-typography-title :heading="5" style="font-weight: bold">请选择您的核算维度</a-typography-title>
-      <a-checkbox-group class="latitudeCardBox" v-model="latitudes">
-        <latitude-card v-for="(item,index) in latitudeList" :latitude="item" :key="index"></latitude-card>
+      <a-typography-title
+          :heading="5"
+          style="font-weight: bold"
+      >
+        请选择您的核算维度
+      </a-typography-title>
+      <a-checkbox-group
+          class="latitudeCardBox"
+          v-model="latitudes"
+      >
+        <latitude-card
+            v-for="(item,index) in latitudeList"
+            :latitude="item"
+            :key="index"
+        ></latitude-card>
       </a-checkbox-group>
+      <a-button
+          type="primary"
+          style="float: right"
+      >
+        确定
+      </a-button>
     </div>
     </a-layout-content>
   </a-layout>
@@ -53,8 +92,45 @@ import HomeMenu from "@/components/HomeMenu.vue";
 import emitter from "@/utils/mitt.ts";
 import LatitudeCard from "@/components/Home/latitudeCard.vue";
 import {ref} from "vue";
-const latitudes=ref([])
+import TradeCard from "@/components/Home/tradeCard.vue";
 
+const latitudes=ref([])
+const trade=ref("")
+
+const tradeList=[
+  {
+    name: "固定燃烧",
+    img:"public/固定燃烧.png",
+  },
+  {
+    name: "移动燃烧",
+    img:"public/移动燃烧.png",
+  },
+  {
+    name: "电热间接排放",
+    img:"public/电热间接排放.png",
+  },
+  {
+    name: "能源加工转换",
+    img:"public/能源加工转换.png",
+  },
+  {
+    name: "工艺排放",
+    img:"public/工艺排放.png",
+  },
+  {
+    name: "差旅通勤",
+    img:"public/差旅通勤.png",
+  },
+  {
+    name: "新能源减排",
+    img:"public/新能源减排.png",
+  },
+  {
+    name: "土地利用碳汇",
+    img:"public/土地利用碳汇.png",
+  }
+]
 const menuList = [
   {
     key: "1",

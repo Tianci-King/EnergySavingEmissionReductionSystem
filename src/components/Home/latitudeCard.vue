@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 .checkBox{
-  padding: 5px;
+  padding-top: 10px;
 }
 .choose{
   color:green;
@@ -15,11 +15,11 @@
 <div class="card">
   <a-checkbox @click="handleChange" :value="latitude.name">
     <template #checkbox="">
-      <a-image :preview="false" :src="latitude.img" width="165"></a-image>
+      <a-image :preview="false" :src="latitude.img" width="165" height="105"></a-image>
     </template>
   </a-checkbox>
   <a-checkbox @click="handleChange" :value="latitude.name" class="checkBox" >
-    <span :class="{'choose':isChoose}">{{latitude.name}}</span>
+    <span :class="{'choose':isChoose}" style="font-size:medium">{{latitude.name}}</span>
   </a-checkbox>
 </div>
 </template>
