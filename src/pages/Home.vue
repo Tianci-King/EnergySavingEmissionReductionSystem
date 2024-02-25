@@ -109,11 +109,11 @@ const tradeList=[
     children:[
       {
         name: "石油和天然气开采业",
-        img:"public/trade/石油天然气开采业.jpg",
+        img:"public/trade/石油和天然气开采业.png",
       },
       {
         name: "煤炭开采和洗选业",
-        img:"public/trade/煤炭开采和洗选业.jpg",
+        img:"public/trade/煤炭开采和洗选业.png",
       },
       {
         name: "电力、热力的生产和供应业",
@@ -212,6 +212,8 @@ const tradeList=[
   }
 ]
 const showTradeList = ref(tradeList);
+
+
 
 const menuList = [
   {
