@@ -20,10 +20,9 @@
 <template>
   <a-menu
       class="menu"
-
   >
     <a-menu-item-group class="menuItemGroup">
-      <span style="font-size: x-large;font-weight: bold;color: #252525" >
+      <span style="font-size: 30px;font-weight: bold;color: #252525" >
         核算维度
       </span>
       <a-menu-item class="menuItem" key="1"><icon-apps />固定燃烧</a-menu-item>
