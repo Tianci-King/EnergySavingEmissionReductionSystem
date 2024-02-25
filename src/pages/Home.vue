@@ -49,7 +49,7 @@
     <a-layout-content class="mainContent">
         <div class="tradeContent">
           <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
-            <a-radio-group v-model="trade" style="max-height: 100%">
+            <a-radio-group v-model="selectTrade" style="max-height: 100%">
               <div v-for="(trade) in showTradeList">
                 <a-typography-title
                     :heading="5"
@@ -101,9 +101,18 @@ import {ref} from "vue";
 import TradeCard from "@/components/Home/tradeCard.vue";
 
 const latitudes=ref([])
-const trade=ref("")
+const selectTrade=ref("")
 
-const tradeList=[
+
+interface trade{
+  trade:string,
+  children:{
+    name:string,
+    img:string
+  }[]
+}
+
+const tradeList:trade[]=[
   {
     trade:"能源行业",
     children:[
