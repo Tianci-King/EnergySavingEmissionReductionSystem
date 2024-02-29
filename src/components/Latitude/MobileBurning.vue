@@ -1,10 +1,10 @@
 <template>
   <div style="padding: 40px 20px">
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 30px;font-weight: bold">固定燃烧</text>
+      <text style="font-size: 30px;font-weight: bold">移动燃烧</text>
     </div>
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 17px;font-weight: lighter">{{text.data1}}</text>
+      <text style="font-size: 17px;font-weight: lighter">{{text.data2}}</text>
     </div>
     <a-table :columns="columns" :data="data" :bordered="false" :pagination="false">
       <template #consumption="{ rowIndex }">
@@ -29,7 +29,7 @@ import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
 
 const latitude = latitudeStore();
-const data = latitude.data1;
+const data = latitude.data2;
 
 const rowWidth = 150;
 

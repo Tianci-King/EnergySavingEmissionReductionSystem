@@ -1,8 +1,8 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 import Home from "@/pages/Home.vue";
 import Form from "@/pages/Form.vue";
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: "/" ,
         redirect: "/Home"
@@ -23,7 +23,7 @@ const routes = [
 const router = createRouter (
     {
         history: createWebHistory() ,
-        routes: routes
+        routes: routes,
     }
 );
 

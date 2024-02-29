@@ -1,14 +1,14 @@
 <template>
   <div style="padding: 40px 20px">
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 30px;font-weight: bold">固定燃烧</text>
+      <text style="font-size: 30px;font-weight: bold">能源加工转换</text>
     </div>
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 17px;font-weight: lighter">{{text.data1}}</text>
+      <text style="font-size: 17px;font-weight: lighter">{{text.data3}}</text>
     </div>
     <a-table :columns="columns" :data="data" :bordered="false" :pagination="false">
-      <template #consumption="{ rowIndex }">
-        <a-input v-model="data[rowIndex].consumption" placeholder="请输入"/>
+      <template #ConversionAndRecovery="{ rowIndex }">
+        <a-input v-model="data[rowIndex].ConversionAndRecovery" placeholder="请输入"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -29,22 +29,27 @@ import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
 
 const latitude = latitudeStore();
-const data = latitude.data1;
+const data = latitude.data3;
 
 const rowWidth = 150;
 
 const columns = ref([{
-  title: '类型',
-  dataIndex: 'kind',
+  title: '原始能源',
+  dataIndex: 'RawEnergy',
   width: rowWidth-40,
   align: 'center'
 },{
-  title: '消耗量(t)',
-  dataIndex: 'consumption',
-  slotName: 'consumption',
+  title: '产出能源',
+  dataIndex: 'OutputEnergy',
   width: rowWidth-40,
   align: 'center'
-}, {
+},{
+  title: '转化与回收量',
+  dataIndex: 'ConversionAndRecovery',
+  slotName: 'ConversionAndRecovery',
+  width: rowWidth-40,
+  align: 'center'
+},{
   title: 'CO₂',
   children: [{
     title: '排放量(t)',
