@@ -42,22 +42,22 @@
 </style>
 
 <template>
-  <a-layout style="min-height: 930px;background: #f2f3f5;" >
-    <a-layout-sider class="sider" :width="250">
-      <HomeMenu class="Menu" :menu-list="menuList"/>
-    </a-layout-sider>
-    <a-layout-content class="mainContent">
-        <div class="tradeContent">
-          <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
-            <a-radio-group v-model="trade" style="max-height: 100%">
-              <div v-for="(trade) in showTradeList">
-                <a-typography-title
-                    :heading="5"
-                    style="font-weight: bold"
-                >
-                  {{trade.trade}}
-                </a-typography-title>
-                <div class="tradeCardBox">
+    <a-layout style="background: #f2f3f5;" >
+      <a-layout-sider class="sider" :width="250">
+        <HomeMenu class="Menu" :menu-list="menuList"/>
+      </a-layout-sider>
+      <a-layout-content class="mainContent">
+          <div class="tradeContent">
+            <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
+              <a-radio-group v-model="trade" style="max-height: 100%">
+                <div v-for="(trade) in showTradeList">
+                  <a-typography-title
+                      :heading="5"
+                      style="font-weight: bold"
+                  >
+                    {{trade.trade}}
+                  </a-typography-title>
+                  <div class="tradeCardBox">
                   <trade-card v-for="(item,index) in trade.children" :key="index" :trade="item"></trade-card>
                 </div>
               </div>
@@ -84,6 +84,7 @@
       <a-button
           type="primary"
           style="float: right"
+          @click="runToForm"
       >
         确定
       </a-button>
@@ -99,6 +100,7 @@ import emitter from "@/utils/mitt.ts";
 import LatitudeCard from "@/components/Home/latitudeCard.vue";
 import {ref} from "vue";
 import TradeCard from "@/components/Home/tradeCard.vue";
+import router from "@/router";
 
 const latitudes=ref([])
 const trade=ref("")
@@ -304,4 +306,7 @@ emitter.on("changeMenu", (key: string) => {
   }
 });
 
+const runToForm = () => {
+  router.push("/form");
+}
 </script>

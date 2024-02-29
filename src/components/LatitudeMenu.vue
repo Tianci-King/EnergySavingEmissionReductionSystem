@@ -20,13 +20,15 @@
 <template>
   <a-menu
       class="menu"
+      @menu-item-click="handleClick"
+      :default-selected-keys="['#anchor1']"
   >
     <a-menu-item-group class="menuItemGroup">
-      <span style="font-size: 30px;font-weight: bold;color: #252525" >
+      <span style="font-size: x-large;font-weight: bold;color: #252525" >
         核算维度
       </span>
-      <a-menu-item class="menuItem" key="1"><icon-apps />固定燃烧</a-menu-item>
-      <a-menu-item class="menuItem" key="2"><icon-apps />移动燃烧</a-menu-item>
+      <a-menu-item class="menuItem" key="#anchor1"><icon-apps />固定燃烧</a-menu-item>
+      <a-menu-item class="menuItem" key="#anchor2"><icon-apps />移动燃烧</a-menu-item>
       <a-menu-item class="menuItem" key="3"><icon-apps />电热间排放</a-menu-item>
       <a-menu-item class="menuItem" key="4"><icon-apps />能源加工转换</a-menu-item>
       <a-menu-item class="menuItem" key="5"><icon-apps />工艺排放</a-menu-item>
@@ -39,5 +41,11 @@
 </template>
 
 <script setup lang="ts">
+
+import emitter from "@/utils/mitt.ts";
+
+const handleClick = (e: any) => {
+  window.location.replace(window.location.href.split('#')[0] + e);
+}
 
 </script>

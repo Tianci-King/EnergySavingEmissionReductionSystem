@@ -1,10 +1,10 @@
 <template>
   <div style="padding: 40px 20px">
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 30px;font-weight: bold">固定燃烧</text>
+      <text style="font-size: 30px;font-weight: bold">电热间排放</text>
     </div>
     <div style="padding: 0 0 20px 0">
-      <text style="font-size: 17px;font-weight: lighter">{{text.data1}}</text>
+      <text style="font-size: 17px;font-weight: lighter">{{text.data4}}</text>
     </div>
     <a-table :columns="columns" :data="data" :bordered="false" :pagination="false">
       <template #consumption="{ rowIndex }">
@@ -29,7 +29,7 @@ import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
 
 const latitude = latitudeStore();
-const data = latitude.data1;
+const data = latitude.data4;
 
 const rowWidth = 150;
 
@@ -39,52 +39,43 @@ const columns = ref([{
   width: rowWidth-40,
   align: 'center'
 },{
-  title: '消耗量(t)',
+  title: '消耗量(10⁴kWh)',
   dataIndex: 'consumption',
   slotName: 'consumption',
   width: rowWidth-40,
   align: 'center'
 }, {
-  title: 'CO₂',
-  children: [{
-    title: '排放量(t)',
-    dataIndex: 'CarbonEmissions',
-    width: rowWidth / 2,
-    align: 'center'
-  }, {
-    title: '排放因子',
-    dataIndex: 'CarbonEmissionsFactors',
-    slotName: 'CarbonEmissionsFactors',
-    width: rowWidth / 2,
-    align: 'center'
-  }]
+  title: 'CO₂排放量(t)',
+  dataIndex: 'CarbonEmissions',
+  width: rowWidth / 2,
+  align: 'center'
 }, {
-  title: 'CH₄',
-  children: [{
-    title: '排放量(kg)',
-    dataIndex: 'MethaneEmissions',
-    width: rowWidth / 2,
-    align: 'center'
-  }, {
-    title: '排放因子',
-    dataIndex: 'MethaneEmissionsFactors',
-    slotName: 'MethaneEmissionsFactors',
-    width: rowWidth / 2,
-    align: 'center'
-  }]
+  title: 'CO₂排放因子',
+  dataIndex: 'CarbonEmissionsFactors',
+  slotName: 'CarbonEmissionsFactors',
+  width: rowWidth / 2,
+  align: 'center'
 }, {
-  title: 'N₂O',
-  children: [{
-    title: '排放量(kg)',
-    dataIndex: 'NitrousOxideEmissions',
-    width: rowWidth / 2,
-    align: 'center'
-  }, {
-    title: '排放因子',
-    dataIndex: 'NitrousOxideEmissionsFactors',
-    slotName: 'NitrousOxideEmissionsFactors',
-    width: rowWidth / 2,
-    align: 'center'
-  }]
+  title: 'CH₄排放量(kg)',
+  dataIndex: 'MethaneEmissions',
+  width: rowWidth / 2,
+  align: 'center'
+}, {
+  title: 'CH₄排放因子',
+  dataIndex: 'MethaneEmissionsFactors',
+  slotName: 'MethaneEmissionsFactors',
+  width: rowWidth / 2,
+  align: 'center'
+}, {
+  title: 'N₂O排放量(kg)',
+  dataIndex: 'NitrousOxideEmissions',
+  width: rowWidth / 2,
+  align: 'center'
+}, {
+  title: '排放因子',
+  dataIndex: 'NitrousOxideEmissionsFactors',
+  slotName: 'NitrousOxideEmissionsFactors',
+  width: rowWidth / 2,
+  align: 'center'
 }]);
 </script>

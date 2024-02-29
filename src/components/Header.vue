@@ -25,7 +25,7 @@
 .header{
   display: flex;
   align-items: center;
-  height: 120px;
+  height: 9vh;
   border-bottom: 1px solid var(--color-border);
 }
 </style>

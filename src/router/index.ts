@@ -23,7 +23,19 @@ const routes = [
 const router = createRouter (
     {
         history: createWebHistory() ,
-        routes: routes
+        routes: routes,
+        scrollBehavior(to, from, savedPosition) {
+            console.log(savedPosition);
+             if (to.hash) {
+                console.log(2)
+                return {
+                    el: to.hash,
+                    behavior: 'smooth',
+                }
+            } else {
+                return { top: 0 }
+            }
+        },
     }
 );
 
