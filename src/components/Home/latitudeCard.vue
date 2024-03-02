@@ -1,4 +1,7 @@
 <style scoped>
+*{
+  user-select: none;
+}
 .card{
   display: flex;
   flex-direction: column;
@@ -38,7 +41,6 @@ const isChoose = ref(false)
 
 const handleChange = () => {
   isChoose.value = !isChoose.value
-  console.log(isChoose.value)
 }
 
 </script>

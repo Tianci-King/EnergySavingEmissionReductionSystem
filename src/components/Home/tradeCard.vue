@@ -1,4 +1,7 @@
 <style scoped>
+*{
+  user-select: none;
+}
 .img:before{
   content: " ";
   position: absolute;
@@ -85,7 +88,7 @@
       </template>
     </a-radio>
     <a-radio :value="trade.name" style="margin-top: 10px">
-      <div style="width: 190px;color: #252525">{{trade.name}}</div>
+      <div style="width: 190px;color: #252525"  @click="handleClick">{{trade.name}}</div>
     </a-radio>
   </div>
 </template>
