@@ -50,15 +50,15 @@
           <div class="tradeContent">
             <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
               <a-radio-group v-model="trade" style="max-height: 100%">
-                <div v-for="(trade) in showTradeList">
+                <div v-for="(tradeItem) in showTradeList">
                   <a-typography-title
                       :heading="5"
                       style="font-weight: bold"
                   >
-                    {{trade.trade}}
+                    {{tradeItem.trade}}
                   </a-typography-title>
                   <div class="tradeCardBox">
-                  <trade-card v-for="(item,index) in trade.children" :key="index" :trade="item"></trade-card>
+                  <trade-card v-for="(item,index) in tradeItem.children" :key="item.name" :trade="item" :is-selected="item.name===trade"></trade-card>
                 </div>
               </div>
             </a-radio-group>
@@ -225,8 +225,6 @@ const tradeList:Trade[]=[
 ]
 const showTradeList = ref(tradeList);
 
-
-
 const menuList = [
   {
     key: "1",
@@ -316,6 +314,13 @@ emitter.on("changeMenu", (key: string) => {
       showTradeList.value = tradeList.filter((item) => item.trade === "采矿业");
       break;
   }
+  for(let i=0;i<showTradeList.value.length;i++){
+    let names = showTradeList.value[i].children.map(item => item.name);
+    if(names.includes(trade.value)){
+      return;
+    }
+  }
+  trade.value = ""
 });
 
 const useMainStore = mainStore();

@@ -101,10 +101,14 @@ const props = defineProps({
   trade: {
     type: Object as () => {name: string, img: string},
     required: true,
+  },
+  isSelected: {
+    type: Boolean,
+    default: false
   }
 })
 
-const isChecked = ref(false)
+const isChecked=ref(props.isSelected)
 
 const handleClick = () => {
   emitter.emit("cancelTradeCardCheck");
