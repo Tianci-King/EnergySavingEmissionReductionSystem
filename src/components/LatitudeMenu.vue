@@ -21,7 +21,7 @@
   <a-menu
       class="menu"
       @menu-item-click="handleClick"
-      :default-selected-keys="['#anchor1']"
+      :default-selected-keys="['1']"
       :selected-keys="[selectedKey]"
   >
     <a-menu-item-group class="menuItemGroup">
@@ -42,10 +42,6 @@
 </template>
 
 <script setup lang="ts">
-
-import emitter from "@/utils/mitt.ts";
-
-
 const props=defineProps({
   handleClick:Function,
   selectedKey:String

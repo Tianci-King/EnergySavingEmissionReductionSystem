@@ -101,6 +101,7 @@ import LatitudeCard from "@/components/Home/latitudeCard.vue";
 import {ref} from "vue";
 import TradeCard from "@/components/Home/tradeCard.vue";
 import router from "@/router";
+import mainStore from "@/stores/Main.ts";
 
 const latitudes=ref([])
 const trade=ref("")
@@ -317,7 +318,12 @@ emitter.on("changeMenu", (key: string) => {
   }
 });
 
+const useMainStore = mainStore();
+
 const runToForm = () => {
   router.push("/form");
+  useMainStore.setTrade(trade.value);
+  console.log(latitudes.value);
+  useMainStore.setLatitudeList(latitudes.value);
 }
 </script>

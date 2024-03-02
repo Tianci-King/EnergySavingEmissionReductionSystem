@@ -205,19 +205,103 @@ const latitudeStore = defineStore(
             "CO2EmissionReduction(t)": 0
         }
         ])
-
         const data72 = ref([{
-            "PowerGenerationMethod": "单向发电",
-            "AverageTidalDifference(m)": "",
-            "ReservoirAverageArea(km)": "",
-            "CO2EmissionReduction(t)": ""
-        },{
-            "PowerGenerationMethod": "双向发电",
-            "AverageTidalDifference(m)": "",
-            "ReservoirAverageArea(km)": "",
-            "CO2EmissionReduction(t)": ""
+            PowerGenerationMethod: '',
+            AverageTidalDifference: '',
+            AverageReservoirArea: '',
+            CO2EmissionReduction: 0
         }
         ])
+        const data73 = ref([
+            {
+                GridConnectedPower: '',
+                MarginalEmissionFactorPower: '',
+                MarginalEmissionFactorCapacity: '',
+                CO2EmissionReduction: 0
+            }
+        ]);
+        const data74 = ref([
+          {
+            HeatingArea: '',
+            HeatLoadCoefficient: '',
+            AnnualHeatingTime: '',
+            ConversionFactor: '',
+            HeatDistributionLoss: '',
+            EmissionFactor: '',
+            NetThermalEfficiency: '',
+            CO2EmissionReduction: 0
+          }
+        ]);
+        const data75 = ref([
+          {
+            GridConnectedPower: '',
+            UnitEmissionFactorCO2: '',
+            EmissionReduction: 0
+          }
+        ]);
+        const data76 = ref([
+            {
+                GridConnectedPower: '',
+                UnitEmissionFactorCO2: '',
+                EmissionReduction: 0
+            }
+        ]);
+        const data77 = ref([
+            {
+                GridConnectedPower: '',
+                UnitEmissionFactorCO2: '',
+                EmissionReduction: 0
+            }
+        ]);
+        const data78 = ref([
+            {
+                InstalledCapacity: '',
+                UnitEmissionFactorCO2: '',
+                EmissionReduction: 0
+            }
+        ]);
+        const data79 = ref([
+          {
+            Type: '煤制氢燃料汽车',
+            CumulativeMileage: '',
+            DieselReductionFactor: '',
+            NaturalGasReductionFactor: '',
+            CO2ReductionDiesel: 0,
+            CO2ReductionNaturalGas: 0
+          },
+          {
+            Type: '蒸汽甲烷转化（SMR）制氢',
+            CumulativeMileage: '',
+            DieselReductionFactor: '',
+            NaturalGasReductionFactor: '',
+            CO2ReductionDiesel: 0,
+            CO2ReductionNaturalGas: 0
+          },
+          {
+            Type: '风电电解水制氢',
+            CumulativeMileage: '',
+            DieselReductionFactor: '',
+            NaturalGasReductionFactor: '',
+            CO2ReductionDiesel: 0,
+            CO2ReductionNaturalGas: 0
+          },
+          {
+            Type: '太阳能电解水制氢',
+            CumulativeMileage: '',
+            DieselReductionFactor: '',
+            NaturalGasReductionFactor: '',
+            CO2ReductionDiesel: 0,
+            CO2ReductionNaturalGas: 0
+          },
+          {
+            Type: '电网电力电解水制氢',
+            CumulativeMileage: '',
+            DieselReductionFactor: '',
+            NaturalGasReductionFactor: '',
+            CO2ReductionDiesel: 0,
+            CO2ReductionNaturalGas: 0
+          }
+        ]);
 
         const data81 = ref([{
             "ForestArea": "",
@@ -227,6 +311,66 @@ const latitudeStore = defineStore(
             "CarbonContentRate": "",
             "CarbonSinkEmissionReduction": 0
         }])
+        const data82 = ref([
+            {"Type": "草地", "Name": "高覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "草地", "Name": "中覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "草地", "Name": "低覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "湿地", "Name": "河渠湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "湿地", "Name": "湖泊湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "湿地", "Name": "水库坑塘湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "湿地", "Name": "滩涂湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "湿地", "Name": "滩地未利用地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "未利用地", "Name": "未利用地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0}
+        ])
+        const data83 = ref([
+            {"Type": "水稻", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "小麦", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {"Type": "大豆", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+        ])
+        const data84 = ref([
+            {
+                Technology: '生物能碳捕获与封存（BECCS）技术',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '富氧燃烧+CO2驱油封存',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '富氧燃烧+CO2咸水层封存',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '整体煤气化联合循环+CO2强化采油',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '整体煤气化联合循环+CO2深部咸水层封存',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '燃烧后捕集+CO2强化采油',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            },
+            {
+                Technology: '燃烧后捕集+CO2深部咸水层封存',
+                ProjectPowerGeneration: '',
+                EmissionReductionPotential: '',
+                CarbonSinkEmissionReduction: 0
+            }
+        ]);
 
         const data9 = ref([{
             "kind": '化肥使用过程',
@@ -292,14 +436,45 @@ const latitudeStore = defineStore(
         const setLatitude72 = (data: any) => {
             data72.value = data;
         }
+        const setLatitude73 = (data: any) => {
+            data73.value = data;
+        }
+        const setLatitude74 = (data: any) => {
+            data74.value = data;
+        }
+        const setLatitude75 = (data: any) => {
+            data75.value = data;
+        }
+        const setLatitude76 = (data: any) => {
+            data76.value = data;
+        }
+        const setLatitude77 = (data: any) => {
+            data77.value = data;
+        }
+        const setLatitude78 = (data: any) => {
+            data78.value = data;
+        }
+        const setLatitude79 = (data: any) => {
+            data79.value = data;
+        }
 
         const setLatitude81 = (data: any) => {
             data81.value = data;
+        }
+        const setLatitude82 = (data: any) => {
+            data82.value = data;
+        }
+        const setLatitude83 = (data: any) => {
+            data83.value = data;
+        }
+        const setLatitude84 = (data: any) => {
+            data84.value = data;
         }
 
         const setLatitude9 = (data: any) => {
             data9.value = data;
         }
+
 
         return {
             data1,
@@ -312,10 +487,10 @@ const latitudeStore = defineStore(
             setLatitude4,
             data5,data6,
             setLatitude5,setLatitude6,
-            data71,data72,
-            setLatitude71,setLatitude72,
-            data81,
-            setLatitude81,
+            data71,data72,data73,data74,data75,data76,data77,data78,data79,
+            setLatitude71,setLatitude72,setLatitude73,setLatitude74,setLatitude75,setLatitude76,setLatitude77,setLatitude78,setLatitude79,
+            data81,data82,data83,data84,
+            setLatitude81,setLatitude82,setLatitude83,setLatitude84,
             data9,
             setLatitude9
         };

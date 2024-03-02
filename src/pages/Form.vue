@@ -7,6 +7,7 @@
     </a-layout-sider>
     <a-layout-content class="mainContent">
       <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
+        <span style="font-size: xx-large">{{trade}}</span>
         <div ref="1" @mouseenter="selectedKey='1'">
           <stationary-combustion />
         </div>
@@ -20,7 +21,7 @@
           <energy-processing-conversion/>
         </div>
         <div ref="5" @mouseenter="selectedKey='5'">
-
+          <process-emissions/>
         </div>
         <div ref="6" @mouseenter="selectedKey='6'">
           <travel-commuting/>
@@ -81,10 +82,11 @@ import IndirectEmissionsOfElectricHeat from "@/components/Latitude/IndirectEmiss
 import TravelCommuting from "@/components/Latitude/TravelCommuting.vue";
 import NewEnergyEmissionReduction from "@/components/Latitude/NewEnergyEmissionReduction.vue";
 import LandUseCarbonSinks from "@/components/Latitude/LandUseCarbonSinks.vue";
-import AgricultureForestryAnimalHusbandryFishery
-  from "@/components/Latitude/AgricultureForestryAnimalHusbandryFishery.vue";
+import AgricultureForestryAnimalHusbandryFishery from "@/components/Latitude/AgricultureForestryAnimalHusbandryFishery.vue";
 import LatitudeMenu from "@/components/LatitudeMenu.vue";
+import ProcessEmissions from "@/components/Latitude/ProcessEmissions.vue";
 
+import mainStore from "@/stores/Main.ts";
 
 const scroll = ref();
 const instance=getCurrentInstance()
@@ -96,4 +98,7 @@ const handleClick = (e: any) => {
     scroll.value.scrollTo({ top: anchor.offsetTop, behavior: "smooth" });
   }
 };
+
+const useMainStore = mainStore();
+const { trade } = useMainStore;
 </script>
