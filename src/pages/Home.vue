@@ -102,6 +102,7 @@ import {ref} from "vue";
 import TradeCard from "@/components/Home/tradeCard.vue";
 import router from "@/router";
 import mainStore from "@/stores/Main.ts";
+import {Message} from "@arco-design/web-vue";
 
 const latitudes=ref([])
 const trade=ref("")
@@ -287,6 +288,10 @@ const latitudeList = [
   {
     name: "土地利用碳汇",
     img:"public/土地利用碳汇.png",
+  },
+  {
+    name: "农林牧渔业",
+    img:"public/农林牧渔业.png",
   }
 ];
 
@@ -326,6 +331,10 @@ emitter.on("changeMenu", (key: string) => {
 const useMainStore = mainStore();
 
 const runToForm = () => {
+  if(trade.value===""||latitudes.value.length===0){
+    Message.error("请选择行业和核算维度");
+    return;
+  }
   router.push("/form");
   useMainStore.setTrade(trade.value);
   console.log(latitudes.value);
