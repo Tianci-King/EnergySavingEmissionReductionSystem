@@ -1,6 +1,6 @@
 <template>
   <a-layout style="background: #f2f3f5;"  >
-    <a-layout-sider class="sider" style="width: 13vw" >
+    <a-layout-sider class="sider" style="width: 250px" >
       <div class="Menu" >
         <LatitudeMenu :handle-click="handleClick" :selected-key="selectedKey" :latitude-list="flagList"></LatitudeMenu>
       </div>
@@ -8,7 +8,7 @@
     <a-layout-content class="mainContent">
       <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px;">
         <span style="font-size: xx-large">{{trade}}</span>
-        <div style="width: 84vw"></div>
+<!--        <div style="width: calc(100vw - 300px)"></div>-->
         <div v-if="flagList.stationaryCombustion === 1" ref="1" @mouseenter="selectedKey='1'">
           <stationary-combustion />
         </div>
@@ -54,6 +54,9 @@
   display: flex;
   padding: 30px;
   height: 91vh;
+}
+.mainContent>*{
+  width: 100%;
 }
 </style>
 
