@@ -24,7 +24,7 @@
       :default-selected-keys="['1']"
       :selected-keys="[selectedKey]"
   >
-    <a-menu-item-group class="menuItemGroup">
+    <a-menu-item-group class="menuItemGroup" style="overflow: hidden">
       <span style="font-size: x-large;font-weight: bold;color: #252525" >
         核算维度
       </span>

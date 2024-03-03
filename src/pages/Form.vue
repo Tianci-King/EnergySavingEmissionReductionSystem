@@ -1,13 +1,14 @@
 <template>
-  <a-layout style="background: #f2f3f5;" >
-    <a-layout-sider class="sider" :width="250">
-      <div class="Menu">
+  <a-layout style="background: #f2f3f5;"  >
+    <a-layout-sider class="sider" style="width: 13vw" >
+      <div class="Menu" >
         <LatitudeMenu :handle-click="handleClick" :selected-key="selectedKey" :latitude-list="flagList"></LatitudeMenu>
       </div>
     </a-layout-sider>
     <a-layout-content class="mainContent">
       <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px;">
         <span style="font-size: xx-large">{{trade}}</span>
+        <div style="width: 84vw"></div>
         <div v-if="flagList.stationaryCombustion === 1" ref="1" @mouseenter="selectedKey='1'">
           <stationary-combustion />
         </div>
