@@ -6,8 +6,9 @@
       </div>
     </a-layout-sider>
     <a-layout-content class="mainContent">
-      <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
+      <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px;">
         <span style="font-size: xx-large">{{trade}}</span>
+        <div style="width: 84vw"></div>
         <div v-if="flagList.stationaryCombustion === 1" ref="1" @mouseenter="selectedKey='1'">
           <stationary-combustion />
         </div>
