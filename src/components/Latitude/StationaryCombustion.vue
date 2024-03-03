@@ -42,7 +42,7 @@ const columns = ref([{
   title: '消耗量(t)',
   dataIndex: 'consumption',
   slotName: 'consumption',
-  width: rowWidth-40,
+  width: rowWidth,
   align: 'center'
 }, {
   title: 'CO₂',

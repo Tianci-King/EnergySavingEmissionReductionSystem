@@ -31,6 +31,40 @@ const latitude = latitudeStore();
 
 const {trades} = useMainStore;
 
+if(trades === "能源行业") {
+  latitude.setLatitude51([
+    {
+      type: 'CO₂逃逸排放',
+      co2Emissions: 0, // replace with actual value
+      ch4Emissions: 0, // replace with actual value
+      n2oEmissions: 0, // replace with actual value
+    },
+    {
+      type: 'CH₄逃逸排放',
+      co2Emissions: 0, // replace with actual value
+      ch4Emissions: 0, // replace with actual value
+      n2oEmissions: 0, // replace with actual value
+    },
+    {
+      type: 'CO₂回收',
+      co2Emissions: 0, // replace with actual value
+      ch4Emissions: 0, // replace with actual value
+      n2oEmissions: 0, // replace with actual value
+    },
+    {
+      type: 'CH₄回收',
+      co2Emissions: 0, // replace with actual value
+      ch4Emissions: 0, // replace with actual value
+      n2oEmissions: 0, // replace with actual value
+    },
+    {
+      type: '其他',
+      co2Emissions: 0, // replace with actual value
+      ch4Emissions: 0, // replace with actual value
+      n2oEmissions: 0, // replace with actual value
+    },
+  ]);
+}
 if(trades !== "能源行业") {
   latitude.setLatitude51([{
     type: trades+"工艺排放",
