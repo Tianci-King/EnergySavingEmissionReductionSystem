@@ -1,7 +1,7 @@
 <template>
-  <a-layout style="background: #f2f3f5;" >
-    <a-layout-sider class="sider" :width="250">
-      <div class="Menu">
+  <a-layout style="background: #f2f3f5;"  >
+    <a-layout-sider class="sider" style="width: 13vw" >
+      <div class="Menu" >
         <LatitudeMenu :handle-click="handleClick" :selected-key="selectedKey" :latitude-list="flagList"></LatitudeMenu>
       </div>
     </a-layout-sider>
