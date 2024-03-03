@@ -37,8 +37,8 @@ import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
 
 const latitude = latitudeStore();
-const data1 = latitude.data5;
-const data2 = latitude.data6;
+const data1 = latitude.data61;
+const data2 = latitude.data62;
 
 const rowWidth = 150;
 

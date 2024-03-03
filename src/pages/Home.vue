@@ -42,53 +42,53 @@
 </style>
 
 <template>
-    <a-layout style="background: #f2f3f5;" >
-      <a-layout-sider class="sider" :width="250">
-        <HomeMenu class="Menu" :menu-list="menuList"/>
-      </a-layout-sider>
-      <a-layout-content class="mainContent">
-          <div class="tradeContent">
-            <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
-              <a-radio-group v-model="trade" style="max-height: 100%">
-                <div v-for="(tradeItem) in showTradeList">
-                  <a-typography-title
-                      :heading="5"
-                      style="font-weight: bold"
-                  >
-                    {{tradeItem.trade}}
-                  </a-typography-title>
-                  <div class="tradeCardBox">
-                  <trade-card v-for="(item,index) in tradeItem.children" :key="item.name" :trade="item" :is-selected="item.name===trade"></trade-card>
-                </div>
+  <a-layout style="background: #f2f3f5;" >
+    <a-layout-sider class="sider" :width="250">
+      <HomeMenu class="Menu" :menu-list="menuList"/>
+    </a-layout-sider>
+    <a-layout-content class="mainContent">
+      <div class="tradeContent">
+        <a-scrollbar style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
+          <a-radio-group v-model="trade" style="max-height: 100%">
+            <div v-for="(tradeItem) in showTradeList">
+              <a-typography-title
+                  :heading="5"
+                  style="font-weight: bold"
+              >
+                {{tradeItem.trade}}
+              </a-typography-title>
+              <div class="tradeCardBox">
+                <trade-card v-for="(item,index) in tradeItem.children" :key="item.name" :trade="item" :is-selected="item.name===trade"></trade-card>
               </div>
-            </a-radio-group>
-          </a-scrollbar>
-        </div>
-    <div class="latitudeContent">
-      <a-typography-title
-          :heading="5"
-          style="font-weight: bold"
-      >
-        请选择您的核算维度
-      </a-typography-title>
-      <a-checkbox-group
-          class="latitudeCardBox"
-          v-model="latitudes"
-      >
-        <latitude-card
-            v-for="(item,index) in latitudeList"
-            :latitude="item"
-            :key="index"
-        ></latitude-card>
-      </a-checkbox-group>
-      <a-button
-          type="primary"
-          style="float: right"
-          @click="runToForm"
-      >
-        确定
-      </a-button>
-    </div>
+            </div>
+          </a-radio-group>
+        </a-scrollbar>
+      </div>
+      <div class="latitudeContent">
+        <a-typography-title
+            :heading="5"
+            style="font-weight: bold"
+        >
+          请选择您的核算维度
+        </a-typography-title>
+        <a-checkbox-group
+            class="latitudeCardBox"
+            v-model="latitudes"
+        >
+          <latitude-card
+              v-for="(item,index) in latitudeList"
+              :latitude="item"
+              :key="index"
+          ></latitude-card>
+        </a-checkbox-group>
+        <a-button
+            type="primary"
+            style="float: right"
+            @click="runToForm"
+        >
+          确定
+        </a-button>
+      </div>
     </a-layout-content>
   </a-layout>
 </template>
@@ -331,13 +331,25 @@ emitter.on("changeMenu", (key: string) => {
 const useMainStore = mainStore();
 
 const runToForm = () => {
-  if(trade.value===""||latitudes.value.length===0){
+  if(trade.value==="" && latitudes.value.length===0){
     Message.error("请选择行业和核算维度");
     return;
+  }else if(trade.value==="") {
+    Message.error("请选择行业");
+    return;
+  }else if(latitudes.value.length===0){
+    Message.error("请选择核算维度");
+    return;
   }
-  router.push("/form");
+  for(let i=0;i<showTradeList.value.length;i++){
+    let names = showTradeList.value[i].children.map(item => item.name);
+    if(names.includes(trade.value)){
+      useMainStore.setTrades(showTradeList.value[i].trade);
+    }
+  }
   useMainStore.setTrade(trade.value);
-  console.log(latitudes.value);
   useMainStore.setLatitudeList(latitudes.value);
+
+  router.push("/form");
 }
 </script>

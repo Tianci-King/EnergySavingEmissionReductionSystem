@@ -2,37 +2,37 @@
   <a-layout style="background: #f2f3f5;" >
     <a-layout-sider class="sider" :width="250">
       <div class="Menu">
-        <LatitudeMenu :handle-click="handleClick" :selected-key="selectedKey"></LatitudeMenu>
+        <LatitudeMenu :handle-click="handleClick" :selected-key="selectedKey" :latitude-list="flagList"></LatitudeMenu>
       </div>
     </a-layout-sider>
     <a-layout-content class="mainContent">
       <a-scrollbar ref="scroll" style="height: calc(88vh);overflow: auto;padding-bottom: 40px">
         <span style="font-size: xx-large">{{trade}}</span>
-        <div ref="1" @mouseenter="selectedKey='1'">
+        <div v-if="flagList.stationaryCombustion === 1" ref="1" @mouseenter="selectedKey='1'">
           <stationary-combustion />
         </div>
-        <div ref="2" @mouseenter="selectedKey='2'">
+        <div v-if="flagList.mobileBurning === 1" ref="2" @mouseenter="selectedKey='2'">
           <mobile-burning/>
         </div>
-        <div ref="3" @mouseenter="selectedKey='3'">
+        <div v-if="flagList.indirectEmissionsOfElectricHeat === 1" ref="3" @mouseenter="selectedKey='3'">
           <indirect-emissions-of-electric-heat/>
         </div>
-        <div ref="4" @mouseenter="selectedKey='4'">
+        <div v-if="flagList.energyProcessingConversion === 1" ref="4" @mouseenter="selectedKey='4'">
           <energy-processing-conversion/>
         </div>
-        <div ref="5" @mouseenter="selectedKey='5'">
+        <div v-if="flagList.processEmissions === 1" ref="5" @mouseenter="selectedKey='5'">
           <process-emissions/>
         </div>
-        <div ref="6" @mouseenter="selectedKey='6'">
+        <div v-if="flagList.travelCommuting === 1" ref="6" @mouseenter="selectedKey='6'">
           <travel-commuting/>
         </div>
-        <div ref="7" @mouseenter="selectedKey='7'">
+        <div v-if="flagList.newEnergyEmissionReduction === 1" ref="7" @mouseenter="selectedKey='7'">
           <new-energy-emission-reduction />
         </div>
-        <div ref="8" @mouseenter="selectedKey='8'">
+        <div v-if="flagList.landUseCarbonSinks === 1" ref="8" @mouseenter="selectedKey='8'">
           <land-use-carbon-sinks/>
         </div>
-        <div ref="9" @mouseenter="selectedKey='9'">
+        <div v-if="flagList.agricultureForestryAnimalHusbandryFishery === 1" ref="9" @mouseenter="selectedKey='9'">
           <agriculture-forestry-animal-husbandry-fishery/>
         </div>
       </a-scrollbar>
@@ -53,23 +53,6 @@
   display: flex;
   padding: 30px;
   height: 91vh;
-}
-
-.menu{
-  height: 100%;
-  font-size: large;
-  background-color: #ffffff;
-}
-.menu .menuItem{
-  background-color: #ffffff;
-  transform: scale(1.075);
-  font-size: medium;
-  border-radius:15px 0 0 15px ;
-}
-.menuItemGroup{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 </style>
 
@@ -100,5 +83,48 @@ const handleClick = (e: any) => {
 };
 
 const useMainStore = mainStore();
-const { trade } = useMainStore;
+const { trade, latitudeList } = useMainStore;
+
+const flagList = ref({
+  stationaryCombustion: 0,
+  mobileBurning: 0,
+  indirectEmissionsOfElectricHeat: 0,
+  energyProcessingConversion: 0,
+  processEmissions: 0,
+  travelCommuting: 0,
+  newEnergyEmissionReduction: 0,
+  landUseCarbonSinks: 0,
+  agricultureForestryAnimalHusbandryFishery: 0,
+})
+for(let item in latitudeList){
+  switch (latitudeList[item]){
+    case "固定燃烧":
+      flagList.value.stationaryCombustion = 1;
+      break;
+    case "移动燃烧":
+      flagList.value.mobileBurning = 1;
+      break;
+    case "电热间接排放":
+      flagList.value.indirectEmissionsOfElectricHeat = 1;
+      break;
+    case "能源加工转换":
+      flagList.value.energyProcessingConversion = 1;
+      break;
+    case "工艺排放":
+      flagList.value.processEmissions = 1;
+      break;
+    case "差旅通勤":
+      flagList.value.travelCommuting = 1;
+      break;
+    case "新能源减排":
+      flagList.value.newEnergyEmissionReduction = 1;
+      break;
+    case "土地利用碳汇":
+      flagList.value.landUseCarbonSinks = 1;
+      break;
+    case "农林牧渔业":
+      flagList.value.agricultureForestryAnimalHusbandryFishery = 1;
+      break;
+  }
+}
 </script>

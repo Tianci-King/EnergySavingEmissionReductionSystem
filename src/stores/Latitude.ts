@@ -155,8 +155,41 @@ const latitudeStore = defineStore(
         },
         ])
 
+        const data51 = ref([
+            {
+                type: 'CO₂逃逸排放',
+                co2Emissions: 0, // replace with actual value
+                ch4Emissions: 0, // replace with actual value
+                n2oEmissions: 0, // replace with actual value
+            },
+            {
+                type: 'CH₄逃逸排放',
+                co2Emissions: 0, // replace with actual value
+                ch4Emissions: 0, // replace with actual value
+                n2oEmissions: 0, // replace with actual value
+            },
+            {
+                type: 'CO₂回收',
+                co2Emissions: 0, // replace with actual value
+                ch4Emissions: 0, // replace with actual value
+                n2oEmissions: 0, // replace with actual value
+            },
+            {
+                type: 'CH₄回收',
+                co2Emissions: 0, // replace with actual value
+                ch4Emissions: 0, // replace with actual value
+                n2oEmissions: 0, // replace with actual value
+            },
+            {
+                type: '其他',
+                co2Emissions: 0, // replace with actual value
+                ch4Emissions: 0, // replace with actual value
+                n2oEmissions: 0, // replace with actual value
+            },
+        ]);
+
         //差旅通勤
-        const data5 = ref([{
+        const data61 = ref([{
             kind: '航空',
             money: '',
             CarbonEmissions: 0,
@@ -178,7 +211,7 @@ const latitudeStore = defineStore(
             CarbonEmissionsFactors: ''
         }
         ]);
-        const data6 = ref([{
+        const data62 = ref([{
             kind: '自驾',
             number: '',
             CarbonEmissions: 0,
@@ -221,23 +254,23 @@ const latitudeStore = defineStore(
             }
         ]);
         const data74 = ref([
-          {
-            HeatingArea: '',
-            HeatLoadCoefficient: '',
-            AnnualHeatingTime: '',
-            ConversionFactor: '',
-            HeatDistributionLoss: '',
-            EmissionFactor: '',
-            NetThermalEfficiency: '',
-            CO2EmissionReduction: 0
-          }
+            {
+                HeatingArea: '',
+                HeatLoadCoefficient: '',
+                AnnualHeatingTime: '',
+                ConversionFactor: '',
+                HeatDistributionLoss: '',
+                EmissionFactor: '',
+                NetThermalEfficiency: '',
+                CO2EmissionReduction: 0
+            }
         ]);
         const data75 = ref([
-          {
-            GridConnectedPower: '',
-            UnitEmissionFactorCO2: '',
-            EmissionReduction: 0
-          }
+            {
+                GridConnectedPower: '',
+                UnitEmissionFactorCO2: '',
+                EmissionReduction: 0
+            }
         ]);
         const data76 = ref([
             {
@@ -261,46 +294,46 @@ const latitudeStore = defineStore(
             }
         ]);
         const data79 = ref([
-          {
-            Type: '煤制氢燃料汽车',
-            CumulativeMileage: '',
-            DieselReductionFactor: '',
-            NaturalGasReductionFactor: '',
-            CO2ReductionDiesel: 0,
-            CO2ReductionNaturalGas: 0
-          },
-          {
-            Type: '蒸汽甲烷转化（SMR）制氢',
-            CumulativeMileage: '',
-            DieselReductionFactor: '',
-            NaturalGasReductionFactor: '',
-            CO2ReductionDiesel: 0,
-            CO2ReductionNaturalGas: 0
-          },
-          {
-            Type: '风电电解水制氢',
-            CumulativeMileage: '',
-            DieselReductionFactor: '',
-            NaturalGasReductionFactor: '',
-            CO2ReductionDiesel: 0,
-            CO2ReductionNaturalGas: 0
-          },
-          {
-            Type: '太阳能电解水制氢',
-            CumulativeMileage: '',
-            DieselReductionFactor: '',
-            NaturalGasReductionFactor: '',
-            CO2ReductionDiesel: 0,
-            CO2ReductionNaturalGas: 0
-          },
-          {
-            Type: '电网电力电解水制氢',
-            CumulativeMileage: '',
-            DieselReductionFactor: '',
-            NaturalGasReductionFactor: '',
-            CO2ReductionDiesel: 0,
-            CO2ReductionNaturalGas: 0
-          }
+            {
+                Type: '煤制氢燃料汽车',
+                CumulativeMileage: '',
+                DieselReductionFactor: '',
+                NaturalGasReductionFactor: '',
+                CO2ReductionDiesel: 0,
+                CO2ReductionNaturalGas: 0
+            },
+            {
+                Type: '蒸汽甲烷转化（SMR）制氢',
+                CumulativeMileage: '',
+                DieselReductionFactor: '',
+                NaturalGasReductionFactor: '',
+                CO2ReductionDiesel: 0,
+                CO2ReductionNaturalGas: 0
+            },
+            {
+                Type: '风电电解水制氢',
+                CumulativeMileage: '',
+                DieselReductionFactor: '',
+                NaturalGasReductionFactor: '',
+                CO2ReductionDiesel: 0,
+                CO2ReductionNaturalGas: 0
+            },
+            {
+                Type: '太阳能电解水制氢',
+                CumulativeMileage: '',
+                DieselReductionFactor: '',
+                NaturalGasReductionFactor: '',
+                CO2ReductionDiesel: 0,
+                CO2ReductionNaturalGas: 0
+            },
+            {
+                Type: '电网电力电解水制氢',
+                CumulativeMileage: '',
+                DieselReductionFactor: '',
+                NaturalGasReductionFactor: '',
+                CO2ReductionDiesel: 0,
+                CO2ReductionNaturalGas: 0
+            }
         ]);
 
         const data81 = ref([{
@@ -422,12 +455,16 @@ const latitudeStore = defineStore(
             data4.value = data;
         }
 
-        const setLatitude5 = (data: any) => {
-            data5.value = data;
+        const setLatitude51 = (data: any) => {
+            data51.value = data;
         }
 
-        const setLatitude6 = (data: any) => {
-            data6.value = data;
+        const setLatitude61 = (data: any) => {
+            data61.value = data;
+        }
+
+        const setLatitude62 = (data: any) => {
+            data62.value = data;
         }
 
         const setLatitude71 = (data: any) => {
@@ -485,8 +522,10 @@ const latitudeStore = defineStore(
             setLatitude3,
             data4,
             setLatitude4,
-            data5,data6,
-            setLatitude5,setLatitude6,
+            data51,
+            setLatitude51,
+            data61,data62,
+            setLatitude5: setLatitude61,setLatitude6: setLatitude62,
             data71,data72,data73,data74,data75,data76,data77,data78,data79,
             setLatitude71,setLatitude72,setLatitude73,setLatitude74,setLatitude75,setLatitude76,setLatitude77,setLatitude78,setLatitude79,
             data81,data82,data83,data84,
