@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
 import Home from "@/pages/Home.vue";
 import Form from "@/pages/Form.vue";
+import Analysis from "@/pages/Analysis.vue";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -17,6 +18,14 @@ const routes: RouteRecordRaw[] = [
         name: "Form" ,
         component: Form
 
+    },
+    {
+        path: "/analysis" ,
+        component:Analysis
+    },
+    {
+        path: "/:pathMatch(.*)*" ,
+        redirect: "/Home"
     }
 ];
 
