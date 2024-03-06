@@ -36,26 +36,22 @@ const rowWidth = 150;
 const columns = ref([{
   title: '类型',
   dataIndex: 'kind',
-  width: rowWidth-40,
   align: 'center'
 },{
   title: '消耗量(t)',
   dataIndex: 'consumption',
   slotName: 'consumption',
-  width: rowWidth-40,
   align: 'center'
 }, {
   title: 'CO₂',
   children: [{
     title: '排放量(t)',
     dataIndex: 'CarbonEmissions',
-    width: rowWidth / 2,
     align: 'center'
   }, {
     title: '排放因子',
     dataIndex: 'CarbonEmissionsFactors',
     slotName: 'CarbonEmissionsFactors',
-    width: rowWidth / 2,
     align: 'center'
   }]
 }, {
@@ -63,13 +59,11 @@ const columns = ref([{
   children: [{
     title: '排放量(kg)',
     dataIndex: 'MethaneEmissions',
-    width: rowWidth / 2,
     align: 'center'
   }, {
     title: '排放因子',
     dataIndex: 'MethaneEmissionsFactors',
     slotName: 'MethaneEmissionsFactors',
-    width: rowWidth / 2,
     align: 'center'
   }]
 }, {
@@ -77,13 +71,11 @@ const columns = ref([{
   children: [{
     title: '排放量(kg)',
     dataIndex: 'NitrousOxideEmissions',
-    width: rowWidth / 2,
     align: 'center'
   }, {
     title: '排放因子',
     dataIndex: 'NitrousOxideEmissionsFactors',
     slotName: 'NitrousOxideEmissionsFactors',
-    width: rowWidth / 2,
     align: 'center'
   }]
 }]);

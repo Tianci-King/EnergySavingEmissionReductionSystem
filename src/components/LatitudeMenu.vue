@@ -9,6 +9,7 @@
   transform: scale(1.075);
   font-size: medium;
   border-radius:15px 0 0 15px ;
+  margin-left: 15px;
 }
 .menuItemGroup{
   display: flex;
