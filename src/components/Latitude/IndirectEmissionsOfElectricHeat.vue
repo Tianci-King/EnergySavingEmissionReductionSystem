@@ -8,7 +8,7 @@
     </div>
     <a-table :columns="columns" :data="data" :bordered="false" :pagination="false">
       <template #consumption="{ rowIndex }">
-        <a-input v-model="data[rowIndex].consumption" placeholder="请输入"/>
+        <a-input v-model="data[rowIndex].consumption" placeholder="请输入" @change="changeInput(data[rowIndex].kind,data[rowIndex].consumption,rowIndex)"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -27,6 +27,7 @@
 import {ref} from 'vue';
 import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
+import {calculateEmission} from "@/utils/calculate.ts";
 
 const latitude = latitudeStore();
 const data = latitude.data4;
@@ -78,4 +79,11 @@ const columns = ref([{
   width: rowWidth / 2,
   align: 'center'
 }]);
+
+const changeInput = (fuelType, consumption, index) => {
+  const emissions = calculateEmission(fuelType, consumption);
+  data[index].CarbonEmissions = emissions[0].toFixed(3);
+  data[index].MethaneEmissions = emissions[1].toFixed(3);
+  data[index].NitrousOxideEmissions = emissions[2].toFixed(3);
+};
 </script>

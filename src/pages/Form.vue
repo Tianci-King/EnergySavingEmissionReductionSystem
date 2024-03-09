@@ -72,7 +72,7 @@ import LandUseCarbonSinks from "@/components/Latitude/LandUseCarbonSinks.vue";
 import AgricultureForestryAnimalHusbandryFishery from "@/components/Latitude/AgricultureForestryAnimalHusbandryFishery.vue";
 import LatitudeMenu from "@/components/LatitudeMenu.vue";
 import ProcessEmissions from "@/components/Latitude/ProcessEmissions.vue";
-
+import Latitude from "@/stores/Latitude.ts";
 import mainStore from "@/stores/Main.ts";
 
 const scroll = ref();
@@ -87,6 +87,7 @@ const handleClick = (e: any) => {
 };
 
 const useMainStore = mainStore();
+const useLatitudeStore = Latitude();
 const { trade, latitudeList } = useMainStore;
 
 const flagList = ref({
@@ -130,5 +131,9 @@ for(let item in latitudeList){
       flagList.value.agricultureForestryAnimalHusbandryFishery = 1;
       break;
   }
+}
+
+const submit = () => {
+
 }
 </script>
