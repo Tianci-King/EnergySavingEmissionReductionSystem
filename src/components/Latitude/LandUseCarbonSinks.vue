@@ -15,16 +15,16 @@
         <a-input v-model="data1[rowIndex].ForestArea" placeholder="请输入"/>
       </template>
       <template #AreaStorage="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].AreaStorage" placeholder="缺省"/>
+        <a-input v-model="data1[rowIndex].AreaStorage" placeholder="请输入"/>
       </template>
       <template #BiologicalExpansionCoefficient="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].BiologicalExpansionCoefficient" placeholder="缺省"/>
+        <a-input v-model="data1[rowIndex].BiologicalExpansionCoefficient" placeholder="请输入"/>
       </template>
       <template #CapacityDensity="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].CapacityDensity" placeholder="缺省"/>
+        <a-input v-model="data1[rowIndex].CapacityDensity" placeholder="请输入"/>
       </template>
       <template #CarbonContent="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].CarbonContent" placeholder="缺省"/>
+        <a-input v-model="data1[rowIndex].CarbonContent" placeholder="请输入"/>
       </template>
     </a-table>
 
@@ -70,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
+import {computed, ref, watch} from 'vue';
 import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
 
@@ -219,4 +219,16 @@ const columns4 = ref([
     align: 'center'
   }
 ]);
+
+const carbonSinkEmissionReduction = computed(() => {
+  return ((data1[0].ForestArea + data1[0].AreaStorage) *
+      data1[0].BiologicalExpansionCoefficient *
+      data1[0].CapacityDensity / 1000 *
+      data1[0].CarbonContent).toFixed(3);
+});
+
+// 监听计算属性的变化，并更新data1[0].CarbonSinkEmissionReduction的值
+watch(carbonSinkEmissionReduction, (newVal) => {
+  data1[0].CarbonSinkEmissionReduction = newVal;
+});
 </script>

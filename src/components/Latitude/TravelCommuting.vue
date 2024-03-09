@@ -9,7 +9,7 @@
     </div>
     <a-table :columns="columns1" :data="data1" :bordered="false" :pagination="false">
       <template #money="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].money" placeholder="请输入"/>
+        <a-input v-model="data1[rowIndex].money" placeholder="请输入" @change="changeInput(data1[rowIndex].kind,data1[rowIndex].money,rowIndex)"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data1[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -22,7 +22,7 @@
     </div>
     <a-table :columns="columns2" :data="data2" :bordered="false" :pagination="false">
       <template #number="{ rowIndex }">
-        <a-input v-model="data2[rowIndex].number" placeholder="请输入"/>
+        <a-input v-model="data2[rowIndex].number" placeholder="请输入" @change="changeInput2(data2[rowIndex].kind,data2[rowIndex].number,rowIndex)"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data2[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -35,6 +35,7 @@
 import {ref} from 'vue';
 import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
+import {calculateEmission2} from "@/utils/calculate.ts";
 
 const latitude = latitudeStore();
 const data1 = latitude.data61;
@@ -95,4 +96,14 @@ const columns2 = ref([{
     align: 'center'
   }]
 }]);
+
+const changeInput = (transportation, ticketPrice, index) => {
+  const emissions = calculateEmission2(transportation, ticketPrice);
+  data1[index].CarbonEmissions = emissions.toFixed(3);
+};
+
+const changeInput2 = (transportation, ticketPrice, index) => {
+  const emissions = calculateEmission2(transportation, ticketPrice);
+  data2[index].CarbonEmissions = emissions.toFixed(3);
+};
 </script>

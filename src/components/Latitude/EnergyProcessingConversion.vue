@@ -7,8 +7,18 @@
       <text style="font-size: 17px;font-weight: lighter">{{text.data3}}</text>
     </div>
     <a-table :columns="columns" :data="data" :bordered="false" :pagination="false">
+      <template #RawEnergy="{ rowIndex }">
+        <a-select v-model="data[rowIndex].RawEnergy" @change="()=>handleChange(rowIndex)">
+          <a-option v-for="value of Object.values(options)">{{value}}</a-option>
+        </a-select>
+      </template>
+      <template #OutputEnergy="{ rowIndex }">
+        <a-select v-model="data[rowIndex].OutputEnergy" @change="()=>handleChange(rowIndex)">
+          <a-option v-for="value of Object.values(options)">{{value}}</a-option>
+        </a-select>
+      </template>
       <template #ConversionAndRecovery="{ rowIndex }">
-        <a-input v-model="data[rowIndex].ConversionAndRecovery" placeholder="请输入"/>
+        <a-input v-model="data[rowIndex].ConversionAndRecovery" placeholder="请输入" @change="changeInput('能源加工转换',data[rowIndex].ConversionAndRecovery,rowIndex)"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -27,20 +37,29 @@
 import {ref} from 'vue';
 import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
+import {calculateEmission} from "@/utils/calculate.ts";
 
 const latitude = latitudeStore();
 const data = latitude.data3;
 
 const rowWidth = 150;
 
+const options = [
+  "风能",
+  "火能",
+  "潮汐能"
+]
+
 const columns = ref([{
   title: '原始能源',
   dataIndex: 'RawEnergy',
+  slotName: 'RawEnergy',
   width: rowWidth-40,
   align: 'center'
 },{
   title: '产出能源',
   dataIndex: 'OutputEnergy',
+  slotName: 'OutputEnergy',
   width: rowWidth-40,
   align: 'center'
 },{
@@ -92,4 +111,11 @@ const columns = ref([{
     align: 'center'
   }]
 }]);
+
+const changeInput = (fuelType, consumption, index) => {
+  const emissions = calculateEmission(fuelType, consumption);
+  data[index].CarbonEmissions = emissions[0].toFixed(3);
+  data[index].MethaneEmissions = emissions[1].toFixed(3);
+  data[index].NitrousOxideEmissions = emissions[2].toFixed(3);
+};
 </script>

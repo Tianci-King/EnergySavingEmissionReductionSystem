@@ -6,7 +6,7 @@ const latitudeStore = defineStore(
     () => {
         const data1 = ref([
             {
-                kind: '燃煤',
+                kind: '原煤',
                 consumption: '',
                 CarbonEmissions: 0,
                 CarbonEmissionsFactors: '',
@@ -16,7 +16,17 @@ const latitudeStore = defineStore(
                 NitrousOxideEmissionsFactors: '',
             },
             {
-                kind: '燃油',
+                kind: '洗精煤',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },
+            {
+                kind: '焦炭',
                 consumption: '',
                 CarbonEmissions: 0,
                 CarbonEmissionsFactors: '',
@@ -34,10 +44,62 @@ const latitudeStore = defineStore(
                 MethaneEmissionsFactors: '',
                 NitrousOxideEmissions: 0,
                 NitrousOxideEmissionsFactors: '',
-            },
-            {
-                kind: '其他',
+            },{
+                kind: '汽油',
                 consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '煤油',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '柴油',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '液化石油气',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '煤制品',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '液化天然气',
+                consumption: '',
+                CarbonEmissions: 0,
+                CarbonEmissionsFactors: '',
+                MethaneEmissions: 0,
+                MethaneEmissionsFactors: '',
+                NitrousOxideEmissions: 0,
+                NitrousOxideEmissionsFactors: '',
+            },{
+                kind: '总计',
                 CarbonEmissions: 0,
                 CarbonEmissionsFactors: '',
                 MethaneEmissions: 0,
@@ -82,30 +144,8 @@ const latitudeStore = defineStore(
 
         const data3 = ref([
             {
-                RawEnergy: '原煤',
-                OutputEnergy: '原煤',
-                ConversionAndRecovery: '',
-                CarbonEmissions: 0,
-                CarbonEmissionsFactors: '',
-                MethaneEmissions: 0,
-                MethaneEmissionsFactors: '',
-                NitrousOxideEmissions: 0,
-                NitrousOxideEmissionsFactors: '',
-            },
-            {
-                RawEnergy: '洗精煤',
-                OutputEnergy: '洗精煤',
-                ConversionAndRecovery: '',
-                CarbonEmissions: 0,
-                CarbonEmissionsFactors: '',
-                MethaneEmissions: 0,
-                MethaneEmissionsFactors: '',
-                NitrousOxideEmissions: 0,
-                NitrousOxideEmissionsFactors: '',
-            },
-            {
-                RawEnergy: '其他洗煤',
-                OutputEnergy: '其他洗煤',
+                RawEnergy: '',
+                OutputEnergy: '',
                 ConversionAndRecovery: '',
                 CarbonEmissions: 0,
                 CarbonEmissionsFactors: '',
@@ -226,16 +266,16 @@ const latitudeStore = defineStore(
 
         const data71 = ref([{
             "kind": "光伏",
-            "InstalledCapacity(kw)": "",
+            "InstalledCapacity": "",
             "SunshineOperatingHours": "",
-            "CarbonEmissions": "",
-            "CO2EmissionReduction(t)": 0
+            "CarbonEmissions": 0,
+            "CarbonEmissionsFactors": ""
         },{
             "kind": "风电",
-            "InstalledCapacity(kw)": "",
+            "InstalledCapacity": "",
             "SunshineOperatingHours": "",
-            "EmissionFactor": "",
-            "CO2EmissionReduction(t)": 0
+            "CarbonEmissions": 0,
+            "CarbonEmissionsFactors": ""
         }
         ])
         const data72 = ref([{

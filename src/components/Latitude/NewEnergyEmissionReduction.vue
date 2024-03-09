@@ -9,10 +9,10 @@
     </div>
     <a-table :columns="columns1" :data="data1" :bordered="false" :pagination="false">
       <template #InstalledCapacity="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].InstalledCapacity" placeholder="请输入"/>
+        <a-input v-model="data1[rowIndex].InstalledCapacity" placeholder="请输入" @change="changeInput(data1[rowIndex].kind,data1[rowIndex].InstalledCapacity,data1[rowIndex].SunshineOperatingHours,rowIndex,data1[rowIndex])"/>
       </template>
       <template #SunshineOperatingHours="{ rowIndex }">
-        <a-input v-model="data1[rowIndex].SunshineOperatingHours" placeholder="请输入"/>
+        <a-input v-model="data1[rowIndex].SunshineOperatingHours" placeholder="请输入" @change="changeInput(data1[rowIndex].kind,data1[rowIndex].InstalledCapacity,data1[rowIndex].SunshineOperatingHours,rowIndex,data1[rowIndex])"/>
       </template>
       <template #CarbonEmissionsFactors="{ rowIndex }">
         <a-input v-model="data1[rowIndex].CarbonEmissionsFactors" placeholder="缺省"/>
@@ -30,56 +30,56 @@
         </a-select>
       </template>
       <template #AverageTidalDifference="{ rowIndex }">
-        <a-input v-model="data2[rowIndex].AverageTidalDifference" placeholder="请输入"/>
+        <a-input v-model="data2[rowIndex].AverageTidalDifference" placeholder="请输入" @change="changeInput('潮汐能',data2[rowIndex].AverageTidalDifference,data2[rowIndex].AverageReservoirArea,rowIndex,data2[rowIndex])"/>
       </template>
       <template #AverageReservoirArea="{ rowIndex }">
-        <a-input v-model="data2[rowIndex].AverageReservoirArea" placeholder="请输入"/>
+        <a-input v-model="data2[rowIndex].AverageReservoirArea" placeholder="请输入" @change="changeInput('潮汐能',data2[rowIndex].AverageTidalDifference,data2[rowIndex].AverageReservoirArea,rowIndex,data2[rowIndex])"/>
       </template>
     </a-table>
 
-    <div style="padding: 40px 0 20px 0">
-      <text style="font-size: 17px">地热能-供电 : </text>
-      <text style="font-size: 17px;font-weight: lighter">{{text.data7[2]}}</text>
-    </div>
-    <a-table :columns="columns3" :data="data3" :bordered="false" :pagination="false">
-      <template #GridConnectedPower="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].GridConnectedPower" placeholder="请输入"/>
-      </template>
-      <template #MarginalEmissionFactorPower="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].MarginalEmissionFactorPower" placeholder="缺省"/>
-      </template>
-      <template #MarginalEmissionFactorCapacity="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].MarginalEmissionFactorCapacity" placeholder="缺省"/>
-      </template>
-    </a-table>
+<!--    <div style="padding: 40px 0 20px 0">-->
+<!--      <text style="font-size: 17px">地热能-供电 : </text>-->
+<!--      <text style="font-size: 17px;font-weight: lighter">{{text.data7[2]}}</text>-->
+<!--    </div>-->
+<!--    <a-table :columns="columns3" :data="data3" :bordered="false" :pagination="false">-->
+<!--      <template #GridConnectedPower="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].GridConnectedPower" placeholder="请输入"/>-->
+<!--      </template>-->
+<!--      <template #MarginalEmissionFactorPower="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].MarginalEmissionFactorPower" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #MarginalEmissionFactorCapacity="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].MarginalEmissionFactorCapacity" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--    </a-table>-->
 
-    <div style="padding: 40px 0 20px 0">
-      <text style="font-size: 17px">地热能-供暖 : </text>
-      <text style="font-size: 17px;font-weight: lighter">{{text.data7[3]}}</text>
-    </div>
-    <a-table :columns="columns4" :data="data4" :bordered="false" :pagination="false">
-      <template #HeatingArea="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].HeatingArea" placeholder="请输入"/>
-      </template>
-      <template #HeatLoadCoefficient="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].HeatLoadCoefficient" placeholder="缺省"/>
-      </template>
-      <template #AnnualHeatingTime="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].AnnualHeatingTime" placeholder="缺省"/>
-      </template>
-      <template #ConversionFactor="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].ConversionFactor" placeholder="缺省"/>
-      </template>
-      <template #HeatDistributionLoss="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].HeatDistributionLoss" placeholder="缺省"/>
-      </template>
-      <template #EmissionFactor="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].EmissionFactor" placeholder="缺省"/>
-      </template>
-      <template #NetThermalEfficiency="{ rowIndex }">
-        <a-input v-model="data3[rowIndex].NetThermalEfficiency" placeholder="缺省"/>
-      </template>
-    </a-table>
+<!--    <div style="padding: 40px 0 20px 0">-->
+<!--      <text style="font-size: 17px">地热能-供暖 : </text>-->
+<!--      <text style="font-size: 17px;font-weight: lighter">{{text.data7[3]}}</text>-->
+<!--    </div>-->
+<!--    <a-table :columns="columns4" :data="data4" :bordered="false" :pagination="false">-->
+<!--      <template #HeatingArea="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].HeatingArea" placeholder="请输入"/>-->
+<!--      </template>-->
+<!--      <template #HeatLoadCoefficient="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].HeatLoadCoefficient" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #AnnualHeatingTime="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].AnnualHeatingTime" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #ConversionFactor="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].ConversionFactor" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #HeatDistributionLoss="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].HeatDistributionLoss" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #EmissionFactor="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].EmissionFactor" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--      <template #NetThermalEfficiency="{ rowIndex }">-->
+<!--        <a-input v-model="data3[rowIndex].NetThermalEfficiency" placeholder="缺省"/>-->
+<!--      </template>-->
+<!--    </a-table>-->
 
     <div style="padding: 40px 0 20px 0">
       <text style="font-size: 17px">生物质发电 : </text>
@@ -87,7 +87,7 @@
     </div>
     <a-table :columns="columns5" :data="data5" :bordered="false" :pagination="false">
       <template #GridConnectedPower="{ rowIndex }">
-        <a-input v-model="data5[rowIndex].GridConnectedPower" placeholder="请输入"/>
+        <a-input v-model="data5[rowIndex].GridConnectedPower" placeholder="请输入" @change="changeInput2('生物质发电',data5[rowIndex].GridConnectedPower,rowIndex, 5)"/>
       </template>
       <template #UnitEmissionFactorCO2="{ rowIndex }">
         <a-input v-model="data5[rowIndex].UnitEmissionFactorCO2" placeholder="缺省"/>
@@ -100,7 +100,7 @@
     </div>
     <a-table :columns="columns6" :data="data6" :bordered="false" :pagination="false">
       <template #GridConnectedPower="{ rowIndex }">
-        <a-input v-model="data6[rowIndex].GridConnectedPower" placeholder="请输入"/>
+        <a-input v-model="data6[rowIndex].GridConnectedPower" placeholder="请输入" @change="changeInput2('水电',data6[rowIndex].GridConnectedPower,rowIndex, 6)"/>
       </template>
       <template #UnitEmissionFactorCO2="{ rowIndex }">
         <a-input v-model="data6[rowIndex].UnitEmissionFactorCO2" placeholder="缺省"/>
@@ -113,7 +113,7 @@
     </div>
     <a-table :columns="columns7" :data="data7" :bordered="false" :pagination="false">
       <template #GridConnectedPower="{ rowIndex }">
-        <a-input v-model="data7[rowIndex].GridConnectedPower" placeholder="请输入"/>
+        <a-input v-model="data7[rowIndex].GridConnectedPower" placeholder="请输入" @change="changeInput2('煤层气发电',data7[rowIndex].GridConnectedPower,rowIndex, 7)"/>
       </template>
       <template #UnitEmissionFactorCO2="{ rowIndex }">
         <a-input v-model="data7[rowIndex].UnitEmissionFactorCO2" placeholder="缺省"/>
@@ -126,7 +126,7 @@
     </div>
     <a-table :columns="columns8" :data="data8" :bordered="false" :pagination="false">
       <template #InstalledCapacity="{ rowIndex }">
-        <a-input v-model="data8[rowIndex].InstalledCapacity" placeholder="请输入"/>
+        <a-input v-model="data8[rowIndex].InstalledCapacity" placeholder="请输入" @change="changeInput2('沼气利用',data8[rowIndex].InstalledCapacity,rowIndex, 8)"/>
       </template>
       <template #UnitEmissionFactorCO2="{ rowIndex }">
         <a-input v-model="data8[rowIndex].UnitEmissionFactorCO2" placeholder="缺省"/>
@@ -155,12 +155,13 @@
 import {ref} from 'vue';
 import latitudeStore from "@/stores/Latitude.ts";
 import text from "@/types/text.ts";
+import {calculateEmission3, calculateEmission4} from "@/utils/calculate.ts";
 
 const latitude = latitudeStore();
 const data1 = latitude.data71;
 const data2 = latitude.data72;
-const data3 = latitude.data73;
-const data4 = latitude.data74;
+// const data3 = latitude.data73;
+// const data4 = latitude.data74;
 const data5 = latitude.data75;
 const data6 = latitude.data76;
 const data7 = latitude.data77;
@@ -471,4 +472,29 @@ const columns9 = ref([
     align: 'center'
   }
 ]);
+
+const changeInput = (kind, InstalledCapacity, SunshineOperatingHours, index, data) => {
+  const emissions = calculateEmission3(kind, InstalledCapacity, SunshineOperatingHours);
+  data.CarbonEmissions = emissions.toFixed(3);
+  data.CO2EmissionReduction = emissions.toFixed(3);
+};
+
+const changeInput2 = (type, GridConnectedPower, index, dataNumber) => {
+  const emissions = calculateEmission4(type, GridConnectedPower);
+  switch(dataNumber) {
+    case 5:
+      data5[index].EmissionReduction = emissions.toFixed(3);
+      break;
+    case 6:
+      data6[index].EmissionReduction = emissions.toFixed(3);
+      break;
+    case 7:
+      data7[index].EmissionReduction = emissions.toFixed(3);
+      break;
+    case 8:
+      data8[index].EmissionReduction = emissions.toFixed(3);
+      break;
+  }
+};
 </script>
+
