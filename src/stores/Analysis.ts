@@ -5,6 +5,55 @@ const analysisStore = defineStore(
     "analysis", () => {
         const selectKey = ref("1");
 
+        //统计
+        const data1 = ref({
+            pieData: [
+                { value: 40, name: '固定燃烧' },
+                { value: 38, name: '移动燃烧' },
+                { value: 32, name: '电热间排放' },
+                { value: 28, name: '能源加工转换' },
+                { value: 26, name: '差旅通勤' },
+                { value: 36, name: '农林牧鱼业'}
+            ]
+        });
+
+        const data2 = ref({
+            optionData: ['总计排放',
+                '固定燃烧',
+                '移动燃烧',
+                '电热间排放',
+                '能源加工转换',
+                '差旅通勤',
+                '农林牧渔业',
+                '新能源减排',
+                '土地利用碳汇'],
+            barData: [3100, 1200, 300, 200, 900, 300, 200, 100, 100]
+        });
+
+        const data31 = ref({
+            pieData: [
+                { value: 7, name: '能源加工转换' },
+                { value: 21, name: '农林牧渔业' },
+                { value: 12, name: '移动燃烧' },
+                { value: 60 , name: '固定燃烧' }
+            ]
+        });
+
+        const data32 = ref({
+            pieData: [
+                { value: 12, name: '电热间排放' },
+                { value: 15, name: '差旅通勤' }
+            ]
+        });
+
+        const data33 = ref({
+            pieData: [
+                { value: 49, name: '新能源减排' },
+                { value: 51, name: '土地利用碳汇' },
+            ]
+        });
+
+        //DEA
         const data = ref([
             {
                 decision: 1,
@@ -54,7 +103,128 @@ const analysisStore = defineStore(
                 [28, 6, 15, 20, 9, 26, 11, 17, 22, 13],
                 [28, 6, 15, 20, 9, 26, 11, 17, 22, 13]
             ]
-    });
+        });
+
+        const sankeyData = ref({
+            "data": [
+                {
+                    "name": "柴油"
+                },
+                {
+                    "name": "通勤差旅"
+                },
+                {
+                    "name": "生产过程直接排放"
+                },
+                {
+                    "name": "焦炭"
+                },
+                {
+                    "name": "天然气"
+                },
+                {
+                    "name": "固定燃烧"
+                },
+                {
+                    "name": "电力热力"
+                },
+                {
+                    "name": "原煤"
+                },
+                {
+                    "name": "能源加工转换"
+                },
+                {
+                    "name": "精洗煤"
+                },
+                {
+                    "name": "汽油"
+                },
+                {
+                    "name": "工艺排放"
+                },
+                {
+                    "name": "移动燃烧"
+                }
+            ],
+            "links": [
+                {
+                    "source": "生产过程直接排放",
+                    "target": "固定燃烧",
+                    "value": 1100
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "移动燃烧",
+                    "value": 730
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "能源加工转换",
+                    "value": 680
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "电力热力",
+                    "value": 630
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "通勤差旅",
+                    "value": 530
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "固定燃烧",
+                    "value": 1630
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "移动燃烧",
+                    "value": 680
+                },
+                {
+                    "source": "生产过程直接排放",
+                    "target": "工艺排放",
+                    "value": 1080
+                },
+                {
+                    "source": "固定燃烧",
+                    "target": "原煤",
+                    "value": 530
+                },
+                {
+                    "source": "固定燃烧",
+                    "target": "精洗煤",
+                    "value": 1630
+                },
+                {
+                    "source": "固定燃烧",
+                    "target": "焦炭",
+                    "value": 680
+                },
+                {
+                    "source": "固定燃烧",
+                    "target": "天然气",
+                    "value": 1080
+                },
+                {
+                    "source": "移动燃烧",
+                    "target": "汽油",
+                    "value": 1003
+                },
+                {
+                    "source": "移动燃烧",
+                    "target": "柴油",
+                    "value": 4000
+                },
+                {
+                    "source": "移动燃烧",
+                    "target": "原煤",
+                    "value": 120
+                }
+            ]
+        })
 
         const setSelectkey = (value: string) => {
             selectKey.value = value;
@@ -73,6 +243,30 @@ const analysisStore = defineStore(
 
         }
 
+        const setSankeyData = (value: any) => {
+            sankeyData.value = value;
+        }
+
+        const setData1 = (value: any) => {
+            data1.value = value;
+        }
+
+        const setData2 = (value: any) => {
+            data2.value = value;
+        }
+
+        const setData31 = (value: any) => {
+            data31.value = value;
+        }
+
+        const setData32 = (value: any) => {
+            data32.value = value;
+        }
+
+        const setData33 = (value: any) => {
+            data33.value = value;
+        }
+
         return {
             selectKey,
             setSelectkey,
@@ -82,6 +276,12 @@ const analysisStore = defineStore(
             setRadarData,
             detectData,
             setDetectData,
+            data1,
+            setData1,
+            data2,
+            setData2,
+            data31,data32,data33,
+            setData31,setData32,setData33,
         }
     },
     {

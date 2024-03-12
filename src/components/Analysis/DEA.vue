@@ -135,8 +135,8 @@ const columns2 = ref([
 const data2 = ref([
   {
     key: '1',
-    randomError: '误差',
-    externalFactors: '因素'
+    randomError: '随机噪声',
+    externalFactors: '原材料、燃料和动力购进价格指数(PPIRM)：燃料动力'
   },
 ]);
 
@@ -184,12 +184,11 @@ const data3 = useAnalysisStore.data;
 const radarOption1 = ref({
   title: {
     text: 'DEA效益分析图',
-    left: 'center',
+    left: 'center'
   },
   legend: {
     data: ['技术效益', '规模效益', '综合效益'],
-    padding: 250,
-    top:140,
+    bottom: 6
   },
   radar: {
     // shape: 'circle',
@@ -211,8 +210,7 @@ const radarOption2 = ref({
   },
   legend: {
     data: ['技术效益', '规模效益', '综合效益'],
-    padding: 250,
-    top:120,
+    bottom: 6
   },
   radar: {
     // shape: 'circle',

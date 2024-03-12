@@ -24,9 +24,11 @@
 import {useRouter} from "vue-router";
 import Latitude from "@/stores/Latitude.ts";
 import formService from "@/services/FormService.ts";
+import AnalysisStore from "@/stores/Analysis.ts";
 
 const router=useRouter();
 const useLatitude=Latitude();
+const useAnalysisStore=AnalysisStore();
 
 const back = () => {
   router.go(-1);
@@ -43,7 +45,7 @@ function calculateEmissions(data) {
     totalNitrousOxideEmissions += item.NitrousOxideEmissions;
   });
 
-  return [totalCarbonEmissions, totalMethaneEmissions, totalNitrousOxideEmissions];
+  return [parseFloat(totalCarbonEmissions), parseFloat(totalMethaneEmissions), parseFloat(totalNitrousOxideEmissions)];
 }
 
 function calculateCarbonEmissions(data) {
@@ -53,7 +55,7 @@ function calculateCarbonEmissions(data) {
     totalCarbonEmissions += item.CarbonEmissions;
   });
 
-  return totalCarbonEmissions;
+  return parseFloat(totalCarbonEmissions);
 }
 
 function calculateCO2EmissionReduction(data) {
@@ -63,7 +65,7 @@ function calculateCO2EmissionReduction(data) {
     totalCO2EmissionReduction += item.CO2EmissionReduction;
   });
 
-  return totalCO2EmissionReduction;
+  return parseFloat(totalCO2EmissionReduction);
 }
 
 function calculateEmissionReduction(data) {
@@ -73,7 +75,7 @@ function calculateEmissionReduction(data) {
     totalCO2EmissionReduction += item.EmissionReduction;
   });
 
-  return totalCO2EmissionReduction;
+  return parseFloat(totalCO2EmissionReduction);
 }
 
 //CarbonSinkEmissionReduction
@@ -84,7 +86,7 @@ function calculateCarbonSinkEmissionReduction(data) {
     totalCarbonSinkEmissionReduction += item.CarbonSinkEmissionReduction;
   });
 
-  return totalCarbonSinkEmissionReduction;
+  return parseFloat(totalCarbonSinkEmissionReduction);
 }
 
 //Emissions
@@ -95,7 +97,7 @@ function calculateEmission(data) {
     totalCarbonSinkEmissionReduction += item.Emissions;
   });
 
-  return totalCarbonSinkEmissionReduction;
+  return parseFloat(totalCarbonSinkEmissionReduction);
 }
 
 const submit = async () => {
@@ -108,12 +110,18 @@ const submit = async () => {
     "差旅通勤": calculateCarbonEmissions(useLatitude.data61)+calculateCarbonEmissions(useLatitude.data62),
     "新能源减排": calculateCarbonEmissions(useLatitude.data71)+calculateCO2EmissionReduction(useLatitude.data72)+calculateCO2EmissionReduction(useLatitude.data73)+calculateCO2EmissionReduction(useLatitude.data74)+calculateEmissionReduction(useLatitude.data75)+calculateEmissionReduction(useLatitude.data76)+calculateEmissionReduction(useLatitude.data77)+calculateEmissionReduction(useLatitude.data78),
     "土地利用碳汇": calculateCarbonSinkEmissionReduction(useLatitude.data81)+calculateCarbonSinkEmissionReduction(useLatitude.data82)+calculateCarbonSinkEmissionReduction(useLatitude.data83)+calculateCarbonSinkEmissionReduction(useLatitude.data84),
-    "农林牧渔业": calculateEmission(useLatitude.data9),
+    "农林牧渔业": parseFloat(calculateEmission(useLatitude.data9)),
   }
 
   const res = await formService.submitForm(data);
-  console.log(res.data);
-  //router.push("/analysis");
+
+  useAnalysisStore.setData1(res.data[0]);
+  useAnalysisStore.setData2(res.data[1]);
+  useAnalysisStore.setData31(res.data[2]);
+  useAnalysisStore.setData32(res.data[3]);
+  useAnalysisStore.setData33(res.data[4]);
+
+  await router.push("/analysis");
 }
 </script>
 

@@ -63,7 +63,7 @@
           class="firstCard"
       >
       </result-card>
-      <div style="line-height: 100px;font-size: xx-large;color: rgb(97, 188, 137);user-select: none">》</div>
+      <div style="line-height: 100px;font-size: xx-large;color: rgb(97, 188, 137);user-select: none;padding-top: 1vw;padding-left: 1vw">》</div>
       <result-card
           :result-card-props="{name:'CO2',value:123,compare:-30}"
           class="resultCard"
@@ -107,26 +107,21 @@
 <script setup lang="ts">
 
 import Chart from "@/components/Analysis/chart.vue";
-import {ref} from "vue";
+import {ref, toRefs} from "vue";
 import ResultCard from "@/components/Analysis/ResultCard.vue";
+import AnalysisStore from "@/stores/Analysis.ts";
+
+const useAnalysisStore = AnalysisStore();
 
 const pieOption=ref({})
-const pieData=ref([
-  { value: 40, name: '固定燃烧' },
-  { value: 38, name: '移动燃烧' },
-  { value: 32, name: '电热间排放' },
-  { value: 28, name: '能源加工转换' },
-  { value: 26, name: '差旅通勤' },
-  { value: 36, name: '农林牧渔业'}
-])
+const {pieData} = toRefs(useAnalysisStore.data1);
 pieOption.value={
   title: {
-    text:'碳排放来源结果分布分析',
+    text:'碳排放来源结果分布饼图分析',
     left: 'center',
   },
   legend: {
-    padding:35,
-    top:5,
+    bottom: 20
   },
   series: [
     {
@@ -134,53 +129,29 @@ pieOption.value={
       avoidLabelOverlap: false,
       stillShowZeroSum:true,
       width: '50%',
-      height: '100%',
+      height: '60%',
       radius: ['40%', '100%'],
-      top:20,
+      top:65,
       left: 150,
       type: 'pie',
       roseType: 'area',
       itemStyle: {
         borderRadius: 10,
       },
-      data: pieData.value
+      data: pieData
     }
   ]
 };
 //-------------------------------------
-const optionData = ref(['总计排放',
-  '固定燃烧',
-  '移动燃烧',
-  '电热间排放',
-  '工艺排放',
-  '差旅通勤',
-  '农林牧鱼业']);
-const barData = ref([3100, 1200, 300, 200, 900, 300, 200]);
+const {optionData, barData} = toRefs(useAnalysisStore.data2);
 const barOption = ref({});
 barOption.value = {
   title: {
-    text: '碳排放来源统计汇总',
-    left: 'center'
-  },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'shadow'
-    },
-    formatter: function (params: any) {
-      var tar = params[1];
-      return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
-    }
-  },
-  grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
-    containLabel: true
+    text: '碳排放来源柱状图分析',
+    left: 'center',
   },
   xAxis: {
     type: 'category',
-    splitLine: { show: false },
     data: optionData.value
   },
   yAxis: {
@@ -188,34 +159,18 @@ barOption.value = {
   },
   series: [
     {
-      name: 'Placeholder',
-      type: 'bar',
-      stack: 'Total',
-      itemStyle: {
-        borderColor: 'transparent',
-        color: 'transparent'
-      },
-      emphasis: {
-        itemStyle: {
-          borderColor: 'transparent',
-          color: 'transparent'
-        }
-      },
-      data: [0, 1900, 1600, 1400, 500, 200]
-    },
-    {
-      name: '碳排放量',
-      type: 'bar',
-      stack: 'Total',
-      label: {
-        show: true,
-        position: 'inside'
-      },
-      data: barData.value
+      data: [barData.value[0], barData.value[1], barData.value[2], barData.value[3], barData.value[4], barData.value[5], barData.value[6],
+        {value: barData.value[7], itemStyle: {color: 'rgb(97, 188, 137)'}},
+        {value: barData.value[8], itemStyle: {color: 'rgb(97, 188, 137)'}}
+      ],
+      type: 'bar'
     }
   ]
 };
 //----------------------------------------
+const {pieData: pieData21} = toRefs(useAnalysisStore.data31);
+const {pieData: pieData22} = toRefs(useAnalysisStore.data32);
+const {pieData: pieData23} = toRefs(useAnalysisStore.data33);
 const binOption1 = ref({
   title: {
     text:'生产过程直接排放',
@@ -225,12 +180,11 @@ const binOption1 = ref({
     trigger: 'item'
   },
   legend: {
-    padding:30,
-    top:9,
+    top:40
   },
   series: [
     {
-      name: 'Access From',
+      name: '生产过程直接排放',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -248,31 +202,25 @@ const binOption1 = ref({
       labelLine: {
         show: true
       },
-      data: [
-        { value: 7, name: '能源加工转换' },
-        { value: 21, name: '工艺排放' },
-        { value: 12, name: '移动燃烧' },
-        { value: 60 , name: '固定燃烧' }
-      ]
+      data: pieData21
     }
   ]
 });
 
 const binOption2 = ref({
   title: {
-    text:'供热与电力间接排放',
+    text:'间接能源消耗排放',
     left: 'center',
   },
   tooltip: {
     trigger: 'item'
   },
   legend: {
-    padding:30,
-    top:9,
+    top: 40
   },
   series: [
     {
-      name: 'Access From',
+      name: '间接能源消耗排放',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -290,31 +238,25 @@ const binOption2 = ref({
       labelLine: {
         show: true
       },
-      data: [
-        { value: 12, name: '售出热力' },
-        { value: 15, name: '购入热力' },
-        { value: 37, name: '售出电力' },
-        { value: 36 , name: '购入电力' }
-      ]
+      data: pieData22
     }
   ]
 });
 
 const binOption3 = ref({
   title: {
-    text:'价值链间接排放',
+    text:'碳减排',
     left: 'center',
   },
   tooltip: {
     trigger: 'item'
   },
   legend: {
-    padding:30,
-    top:9,
+    top: 40
   },
   series: [
     {
-      name: 'Access From',
+      name: '碳减排',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -332,10 +274,7 @@ const binOption3 = ref({
       labelLine: {
         show: true
       },
-      data: [
-        { value: 49, name: '员工通勤' },
-        { value: 51, name: '员工差旅' },
-      ]
+      data: pieData23
     }
   ]
 });
