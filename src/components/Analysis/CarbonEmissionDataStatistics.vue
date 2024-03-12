@@ -33,14 +33,52 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
   display: flex;
 }
+.cardDiv{
+  display: flex;
+  gap: 50px;
+  justify-content: space-around;
+  margin: 50px;
+}
+.firstCard{
+  background:linear-gradient(rgb(240, 192, 74),rgb(238, 126, 74));
+  border-radius: 10px;
+  transform: scale(1.3);
+  color: white;
+}
+.resultCard{
+  background:linear-gradient(rgb(251, 255, 253),rgb(246, 255, 250));
+  border-radius: 10px;
+  border:rgb(160, 211, 186) solid 1px;
+  transform: scale(1.1);
+}
 </style>
 
 <template>
  <div>
    <h1 class="h1">碳排放数据统计</h1>
    <div class="content-box">
-    <div>
-
+    <div class="cardDiv">
+      <result-card
+          :result-card-props="{name:'总CO2',value:123,compare:30}"
+          class="firstCard"
+      >
+      </result-card>
+      <div style="line-height: 100px;font-size: xx-large;color: rgb(97, 188, 137);user-select: none">》</div>
+      <result-card
+          :result-card-props="{name:'CO2',value:123,compare:-30}"
+          class="resultCard"
+      >
+      </result-card>
+      <result-card
+          :result-card-props="{name:'CH4',value:123,compare:0}"
+          class="resultCard"
+      >
+      </result-card>
+      <result-card
+          :result-card-props="{name:'N2O',value:123,compare:20}"
+          class="resultCard"
+      >
+      </result-card>
     </div>
     <div style="width: 100%;display: flex;justify-content: space-around;">
       <div class="chartDiv">
@@ -70,6 +108,7 @@
 
 import Chart from "@/components/Analysis/chart.vue";
 import {ref} from "vue";
+import ResultCard from "@/components/Analysis/ResultCard.vue";
 
 const pieOption=ref({})
 const pieData=ref([

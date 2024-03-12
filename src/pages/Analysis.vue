@@ -7,8 +7,8 @@
   justify-content: center;
 }
 .real-content{
-  //margin: 30px 0  30px 0;
-  //border-radius: 40px;
+  /*margin: 30px 0  30px 0;*/
+  /*border-radius: 40px;*/
   min-width: 1450px;
   height: 5000px;
   background: white;
