@@ -264,19 +264,21 @@ const latitudeStore = defineStore(
         }
         ]);
 
-        const data71 = ref([{
-            "kind": "光伏",
-            "InstalledCapacity": "",
-            "SunshineOperatingHours": "",
-            "CarbonEmissions": 0,
-            "CarbonEmissionsFactors": ""
-        },{
-            "kind": "风电",
-            "InstalledCapacity": "",
-            "SunshineOperatingHours": "",
-            "CarbonEmissions": 0,
-            "CarbonEmissionsFactors": ""
-        }
+        const data71 = ref([
+          {
+            kind: "光伏",
+            InstalledCapacity: "",
+            SunshineOperatingHours: "",
+            CarbonEmissions: 0,
+            CarbonEmissionsFactors: ""
+          },
+          {
+            kind: "风电",
+            InstalledCapacity: "",
+            SunshineOperatingHours: "",
+            CarbonEmissions: 0,
+            CarbonEmissionsFactors: ""
+          }
         ])
         const data72 = ref([{
             PowerGenerationMethod: '',
@@ -377,28 +379,28 @@ const latitudeStore = defineStore(
         ]);
 
         const data81 = ref([{
-            "ForestArea": "",
-            "AreaStorageCapacity": "",
-            "BiomassExpansionFactor": "",
-            "VolumeDensity": "",
-            "CarbonContentRate": "",
-            "CarbonSinkEmissionReduction": 0
+            ForestArea: "",
+            AreaStorageCapacity: "",
+            BiomassExpansionFactor: "",
+            VolumeDensity: "",
+            CarbonContentRate: "",
+            CarbonSinkEmissionReduction: 0
         }])
         const data82 = ref([
-            {"Type": "草地", "Name": "高覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "草地", "Name": "中覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "草地", "Name": "低覆盖度草地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "湿地", "Name": "河渠湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "湿地", "Name": "湖泊湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "湿地", "Name": "水库坑塘湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "湿地", "Name": "滩涂湿地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "湿地", "Name": "滩地未利用地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "未利用地", "Name": "未利用地", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0}
+            {Type: "草地", Name: "高覆盖度草地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "草地", Name: "中覆盖度草地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "草地", Name: "低覆盖度草地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "湿地", Name: "河渠湿地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "湿地", Name: "湖泊湿地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "湿地", Name: "水库坑塘湿地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "湿地", Name: "滩涂湿地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "湿地", Name: "滩地未利用地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "未利用地", Name: "未利用地", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0}
         ])
         const data83 = ref([
-            {"Type": "水稻", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "小麦", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
-            {"Type": "大豆", "Area": "", "CarbonSinkCoefficient": "", "CarbonSinkEmissionReduction": 0},
+            {Type: "水稻", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "小麦", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
+            {Type: "大豆", Area: "", CarbonSinkCoefficient: "", CarbonSinkEmissionReduction: 0},
         ])
         const data84 = ref([
             {
@@ -445,37 +447,42 @@ const latitudeStore = defineStore(
             }
         ]);
 
-        const data9 = ref([{
-            "kind": '化肥使用过程',
-            "Name": '消耗量(kg)',
-            "Number": '',
-            "Emissions": 0,
-            "EmissionFactor": ''
-        },{
-            "kind": '翻耕碳排放',
-            "Name": '翻耕面积(km²)',
-            "Number": '',
-            "Emissions": 0,
-            "EmissionFactor": ''
-        },{
-            "kind": '农业灌溉',
-            "Name": '灌溉面积(km²)',
-            "Number": '',
-            "Emissions": 0,
-            "EmissionFactor": ''
-        },{
-            "kind": '农膜使用',
-            "Name": '消耗量(kg)',
-            "Number": '',
-            "Emissions": 0,
-            "EmissionFactor": ''
-        },{
-            "kind": '农药使用',
-            "Name": '消耗量(kg)',
-            "Number": '',
-            "Emissions": 0,
-            "EmissionFactor": ''
-        },
+        const data9 = ref([
+          {
+            kind: '化肥使用过程',
+            Name: '消耗量(kg)',
+            Number: '',
+            Emissions: 0,
+            EmissionFactor: ''
+          },
+          {
+            kind: '翻耕碳排放',
+            Name: '翻耕面积(km²)',
+            Number: '',
+            Emissions: 0,
+            EmissionFactor: ''
+          },
+          {
+            kind: '农业灌溉',
+            Name: '灌溉面积(km²)',
+            Number: '',
+            Emissions: 0,
+            EmissionFactor: ''
+          },
+          {
+            kind: '农膜使用',
+            Name: '消耗量(kg)',
+            Number: '',
+            Emissions: 0,
+            EmissionFactor: ''
+          },
+          {
+            kind: '农药使用',
+            Name: '消耗量(kg)',
+            Number: '',
+            Emissions: 0,
+            EmissionFactor: ''
+          }
         ])
 
         const setLatitude1 = (data: any) => {

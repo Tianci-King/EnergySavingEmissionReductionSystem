@@ -235,9 +235,12 @@ const sankeyOption = ref({
     <div class="content-box">
       <div style="width: 100%;display: flex;justify-content: space-around;">
         <div class="chartDiv">
-          <chart style="display: flex;justify-content: center" :option="stackOption"></chart>
+          <chart style="display: flex;justify-content: center" :option="sankeyOption"></chart>
         </div>
-      </div>
+        <div class="chartDiv">
+        <chart style="display: flex;justify-content: center" :option="stackOption"></chart>
+        </div>
+        </div>
       <div style="padding-bottom: 10px"></div>
     </div>
   </div>

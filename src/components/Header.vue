@@ -32,17 +32,83 @@ const back = () => {
   router.go(-1);
 }
 
+function calculateEmissions(data) {
+  let totalCarbonEmissions = 0;
+  let totalMethaneEmissions = 0;
+  let totalNitrousOxideEmissions = 0;
+
+  data.forEach(item => {
+    totalCarbonEmissions += item.CarbonEmissions;
+    totalMethaneEmissions += item.MethaneEmissions;
+    totalNitrousOxideEmissions += item.NitrousOxideEmissions;
+  });
+
+  return [totalCarbonEmissions, totalMethaneEmissions, totalNitrousOxideEmissions];
+}
+
+function calculateCarbonEmissions(data) {
+  let totalCarbonEmissions = 0;
+
+  data.forEach(item => {
+    totalCarbonEmissions += item.CarbonEmissions;
+  });
+
+  return totalCarbonEmissions;
+}
+
+function calculateCO2EmissionReduction(data) {
+  let totalCO2EmissionReduction = 0;
+
+  data.forEach(item => {
+    totalCO2EmissionReduction += item.CO2EmissionReduction;
+  });
+
+  return totalCO2EmissionReduction;
+}
+
+function calculateEmissionReduction(data) {
+  let totalCO2EmissionReduction = 0;
+
+  data.forEach(item => {
+    totalCO2EmissionReduction += item.EmissionReduction;
+  });
+
+  return totalCO2EmissionReduction;
+}
+
+//CarbonSinkEmissionReduction
+function calculateCarbonSinkEmissionReduction(data) {
+  let totalCarbonSinkEmissionReduction = 0;
+
+  data.forEach(item => {
+    totalCarbonSinkEmissionReduction += item.CarbonSinkEmissionReduction;
+  });
+
+  return totalCarbonSinkEmissionReduction;
+}
+
+//Emissions
+function calculateEmission(data) {
+  let totalCarbonSinkEmissionReduction = 0;
+
+  data.forEach(item => {
+    totalCarbonSinkEmissionReduction += item.Emissions;
+  });
+
+  return totalCarbonSinkEmissionReduction;
+}
+
 const submit = async () => {
 
   const data = {
-    "固定燃烧": [100,100,100],
-    "移动燃烧": [100,100,100],
-    "电热间排放":[100,100,100],
-    "能源加工转换":[100,100,100],
-    "差旅通勤":100,
-    "新能源减排":100,
-    "土地利用碳汇":100,
-    "农林牧渔业":100
+    "固定燃烧": calculateEmissions(useLatitude.data1),
+    "移动燃烧": calculateEmissions(useLatitude.data2),
+    "电热间排放": calculateEmissions(useLatitude.data4),
+    "能源加工转换": calculateEmissions(useLatitude.data3),
+    "差旅通勤": calculateCarbonEmissions(useLatitude.data61)+calculateCarbonEmissions(useLatitude.data62),
+    "新能源减排": calculateCarbonEmissions(useLatitude.data71)+calculateCO2EmissionReduction(useLatitude.data72)+calculateCO2EmissionReduction(useLatitude.data73)+calculateCO2EmissionReduction(useLatitude.data74)+calculateEmissionReduction(useLatitude.data75)+calculateEmissionReduction(useLatitude.data76)+calculateEmissionReduction(useLatitude.data77)+calculateEmissionReduction(useLatitude.data78),
+    "土地利用碳汇": calculateCarbonSinkEmissionReduction(useLatitude.data81)+calculateCarbonSinkEmissionReduction(useLatitude.data82)+calculateCarbonSinkEmissionReduction(useLatitude.data83)+calculateCarbonSinkEmissionReduction(useLatitude.data84),
+    "农林牧渔业": calculateEmission(useLatitude.data9),
   }
 
   const res = await formService.submitForm(data);
