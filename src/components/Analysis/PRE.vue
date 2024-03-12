@@ -13,9 +13,6 @@ onMounted(async () => {
 })
 
 const stackOption = {
-  title: {
-    text: 'Stacked Line'
-  },
   tooltip: {
     trigger: 'axis'
   },
@@ -27,11 +24,6 @@ const stackOption = {
     right: '4%',
     bottom: '3%',
     containLabel: true
-  },
-  toolbox: {
-    feature: {
-      saveAsImage: {}
-    }
   },
   xAxis: {
     type: 'category',
@@ -226,21 +218,97 @@ const sankeyOption = ref({
   }
 });
 
+const pieOption =ref( {
+  legend: {
+    padding:30,
+    bottom:9,
+    borderRadius:50
+  },
+  series: [
+    {
+      type: 'pie',
+      selectedMode: 'single',
+      radius: [0, '40%'],
+      label: {
+        position: 'inner',
+        fontSize: 14
+      },
+      emptyCircleStyle:{
+        color: 'rgb(123, 206, 238)'
+      },
+      labelLine: {
+        show: false
+      },
+      data: []
+    },
+    {
+      type: 'pie',
+      radius: ['45%', '60%'],
+      padAngle: 5,
+      itemStyle: {
+        borderRadius: "50%",
+      },
+      data: [
+        { value: 71900, name: '碳排放成本'},
+        { value: 84000, name: '碳汇收益'},
+        { value: 12100, name: '碳成本净值' },
+      ]
+    }
 
+  ]
+})
+
+const pieData = ref()
+//保留一位
+pieData.value = `碳排放成本\n71900 ${(71900/(84000+71900+12100)*100).toFixed(1)}%\n
+碳汇收益\n84000 ${(84000/(84000+71900+12100)*100).toFixed(1)}%\n
+碳成本净值\n12100 ${(12100/(84000+71900+12100)*100).toFixed(1)}%`
 </script>
 
 <template>
   <div>
-    <h1 class="h1">碳排放三阶段数据包络分析（3S-DEA）</h1>
+    <h1 class="h1">碳排放数据预测</h1>
     <div class="content-box">
+      <div style="width: 100%;display: flex;justify-content: space-around;flex-direction: column">
+        <div class="chartDiv" style="width: 100%">
+          <chart style="display: flex;justify-content: center" :option="stackOption"></chart>
+        </div>
+        <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large">
+          <h3>智能分析</h3>
+          <p>上图展示了prophet预测模型的拟合预测图。</p>
+          <p>一、总体数据趋势分析</p>
+          <p>根据预测结果，按照现有排放策略未来12个月公司碳排放数据将呈现上升/波动/下降/平稳趋势，产生总量为xx的碳排放。</p>
+          <p>二、各项数据分析</p>
+          <p>在各项预测数据中，生产过程直接排放量呈上升/波动/下降/平稳趋势，产生总量为xx的碳排放；供热与电力直接排放呈上升/波动/下降/平稳趋势，产生总量为xx的碳排放；价值链间接排放呈上升/波动/下降/平稳趋势，产生总量为xx的碳排放。</p>
+          <p>三、智能建议</p>
+          <p>公司在xx子项的排放状态良好，在xx子项的碳排放控制呈现恶化趋势，建议在该项进行减碳。</p>
+        </div>
+      </div>
       <div style="width: 100%;display: flex;justify-content: space-around;">
-        <div class="chartDiv">
-          <chart style="display: flex;justify-content: center" :option="sankeyOption"></chart>
+        <div style="width: 45%">
+          <h1 class="h1">碳排放路径分析</h1>
+          <div class="chartDiv" style="width: 100%">
+            <chart style="display: flex;justify-content: center" :option="sankeyOption"></chart>
+          </div>
+          <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large">
+            <h3>碳排放路径分析：</h3>
+            <p>如图所示，生产过程直接排放中最大的碳排放流动去向是固定燃烧，固定燃烧中最大的碳排放流动去向是精洗煤。通过链路分析，发现生产过程直接排放-固定烷烧-精洗煤是一条关键的排放链路。</p>
+          </div>
         </div>
-        <div class="chartDiv">
-        <chart style="display: flex;justify-content: center" :option="stackOption"></chart>
+        <div style="width: 45%">
+          <h1 class="h1">碳排放成本-收益画像</h1>
+          <div class="chartDiv" style="width: 100%">
+            <chart style="display: flex;justify-content: center" :option="pieOption" :size="{width:'70%',height:'100%'}"></chart>
+            <div style="width: 30%;white-space: pre-wrap;font-size: x-large;padding-top: 40px">
+              {{pieData}}
+            </div>
+          </div>
+          <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large">
+            <h3>碳排放成本-收益画像：</h3>
+            <p>按照50元/吨的碳排放权交易价格并基于历史数据设置碳排放限额，本月产生碳排放成本71900元，碳汇收益 84000元，共得碳成本净值12100元。</p>
+          </div>
         </div>
-        </div>
+      </div>
       <div style="padding-bottom: 10px"></div>
     </div>
   </div>
@@ -277,6 +345,7 @@ const sankeyOption = ref({
   width: 100%;
 }
 .chartDiv{
+  margin-top: 20px;
   padding-top:10px;
   width: 45%;
   height: 450px;
