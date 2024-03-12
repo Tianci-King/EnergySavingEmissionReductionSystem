@@ -21,7 +21,7 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: "/analysis" ,
-        component:Analysis
+        component:Analysis,
     },
     {
         path: "/:pathMatch(.*)*" ,

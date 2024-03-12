@@ -22,15 +22,32 @@
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
+import Latitude from "@/stores/Latitude.ts";
+import formService from "@/services/FormService.ts";
 
 const router=useRouter();
+const useLatitude=Latitude();
 
 const back = () => {
   router.go(-1);
 }
 
-const submit = () => {
+const submit = async () => {
 
+  const data = {
+    "固定燃烧": [100,100,100],
+    "移动燃烧": [100,100,100],
+    "电热间排放":[100,100,100],
+    "能源加工转换":[100,100,100],
+    "差旅通勤":100,
+    "新能源减排":100,
+    "土地利用碳汇":100,
+    "农林牧渔业":100
+  }
+
+  const res = await formService.submitForm(data);
+  console.log(res.data);
+  //router.push("/analysis");
 }
 </script>
 

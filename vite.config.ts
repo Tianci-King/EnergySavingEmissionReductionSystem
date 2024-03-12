@@ -20,7 +20,7 @@ export default defineConfig(({mode}) => {
     server: {
       proxy: {
         "/api": {
-          target: env.HOST,
+          target: "",
           changeOrigin: true, //是否跨域
           //rewrite: (path) => path.replace(/^\/api/, ""), //如果 Apifox 上 接口 并没有 /api 前缀，所以这里需要去掉
           // ws: true, //是否代理 websockets

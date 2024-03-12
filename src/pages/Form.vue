@@ -61,7 +61,7 @@
 </style>
 
 <script setup lang="ts">
-import {getCurrentInstance, onMounted, ref} from "vue";
+import {getCurrentInstance, ref} from "vue";
 import StationaryCombustion from "@/components/Latitude/StationaryCombustion.vue";
 import MobileBurning from "@/components/Latitude/MobileBurning.vue";
 import EnergyProcessingConversion from "@/components/Latitude/EnergyProcessingConversion.vue";
@@ -131,9 +131,5 @@ for(let item in latitudeList){
       flagList.value.agricultureForestryAnimalHusbandryFishery = 1;
       break;
   }
-}
-
-const submit = () => {
-
 }
 </script>

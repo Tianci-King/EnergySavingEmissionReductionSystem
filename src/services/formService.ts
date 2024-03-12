@@ -1,4 +1,5 @@
 import request from "@/services/request.ts";
+import apis from "@/services/apis.ts";
 
 interface formType {
 
@@ -11,7 +12,7 @@ export default class formService {
                 "Content-Type": "application/json",
             },
             method: "post",
-            url: "/api/submitForm",
+            url: "http://192.168.31.129:30000" + apis.front,
             data: data
         });
     }
