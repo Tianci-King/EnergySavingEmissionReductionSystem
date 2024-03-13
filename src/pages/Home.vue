@@ -35,8 +35,8 @@
   display: flex;
   flex-wrap: wrap;
   gap:20px;
-  justify-content: flex-start;
-  align-content: flex-start;
+  justify-content: space-around;
+  align-content: space-around;
   height: 85%;
 }
 </style>
