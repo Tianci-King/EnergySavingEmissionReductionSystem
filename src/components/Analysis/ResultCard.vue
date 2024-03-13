@@ -53,7 +53,7 @@ background: rgb(102, 134, 243);
 background: rgb(183, 128, 255);
 }
 .color4{
-  background: url("public/tu2.8bf63eb4.png");
+  background: url("/tu2.8bf63eb4.png");
   background-size: 100% 100%;
 }
 </style>

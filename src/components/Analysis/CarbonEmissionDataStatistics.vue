@@ -59,23 +59,23 @@
    <div class="content-box">
     <div class="cardDiv">
       <result-card
-          :result-card-props="{name:'总CO2',value:123,compare:30}"
+          :result-card-props="{name:'总CO2',value:13640,compare:30}"
           class="firstCard"
       >
       </result-card>
       <div style="line-height: 100px;font-size: xx-large;color: rgb(97, 188, 137);user-select: none;padding-top: 1vw;padding-left: 1vw">》</div>
       <result-card
-          :result-card-props="{name:'CO2',value:123,compare:-30}"
+          :result-card-props="{name:'CO2',value:10250,compare:-30}"
           class="resultCard"
       >
       </result-card>
       <result-card
-          :result-card-props="{name:'CH4',value:123,compare:0}"
+          :result-card-props="{name:'CH4',value:560,compare:0}"
           class="resultCard"
       >
       </result-card>
       <result-card
-          :result-card-props="{name:'N2O',value:123,compare:20}"
+          :result-card-props="{name:'N2O',value:2650,compare:20}"
           class="resultCard"
       >
       </result-card>

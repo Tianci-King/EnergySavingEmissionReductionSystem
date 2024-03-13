@@ -79,7 +79,38 @@
           <chart style="display: flex;justify-content: center"  :option="radarOption2"></chart>
         </div>
       </div>
-      <div style="padding-bottom: 10px"></div>
+      <div style="padding-top: 10px"></div>
+      <div style="width:100%;padding: 0 40px 20px 45px;display:flex;flex-direction: column">
+        <text style="font-weight: bold;font-size: x-large;text-align: center;padding-right: 10px;padding-bottom:10px;display: flex;justify-content: left;">DEA 智能分析：</text>
+        <text style="font-size: large;font-weight: bold">总体分析：</text>
+          <text style="font-size: medium">
+            <p>在所有决策单元（月份）中，以下决策单元需要提高效率以达到DEA强有效状态：</p>
+            <p>单位2 (规模报酬递增) 单位6 (规模报酬递增) 单位8 (规模报酬递增) 单位10 (规模报酬递增) 单位11 (规模报酬递增)单位12 (规模报酬递增)</p>
+            <p>从整体来看，规模报酬递增的单位有6个，规模报酬递增表明在当前生产规模下，增加投入将导致产出的增加幅度大于投入的增加幅度，碳排放效率有一定的提升空间。</p>
+          </text>
+        <text style="font-size: large;font-weight: bold;padding-top: 10px">投入冗余分析：</text>
+        <text style="font-size: medium">
+          <p>在所有的决策单元中，固定燃烧平均冗余率为0.04，移动燃烧平均冗余率为0.03，能源加工转换平均冗余率为0.03</p>
+          <p>工艺排放平均冗余率为0.73，供热与电力间接排放平均冗余率为0.01，差旅通勤平均冗余率为0.72。从总体来看，企业在差旅通勤、工艺排放两项有一定的减碳改进空间。</p>
+        </text>
+
+
+
+
+          最新数据分析（基于本月碳排放数据）：
+          本月的DEA分析结果显示如下特点：单位未达到DEA强有效状态，属于规模报酬递增。
+          在当前的投入和产出水平下，相比于DEA方法识别的效率前沿（即最佳实践边界），企业存在碳排放效率改进的空间。
+          建议审查以下方面以提高效率：
+
+          - ('投入冗余率', '固定燃烧'): 0.20
+          - ('投入冗余率', '移动燃烧'): 0.12
+          - ('投入冗余率', '能源加工转换'): 0.18
+          - ('投入冗余率', '工艺排放'): 0.98
+          - ('投入冗余率', '供热与电力间接排放'): 0.09
+          - ('投入冗余率', '差旅通勤'): 0.98
+
+          基于本月数据，建议进一步优化资源分配，关注提高产出效率并减少不必要的投入。
+      </div>
     </div>
   </div>
 </template>

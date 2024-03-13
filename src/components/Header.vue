@@ -7,10 +7,10 @@
         :show-back="router.currentRoute.value.name !== 'Home'"
     >
       <template #title>
-        <span style="font-size: xx-large">节能减排碳足迹</span>
+        <span style="font-size: xx-large">&emsp;碳小汇&emsp;</span>
       </template>
       <template #subtitle>
-        <span style="font-size: large">企业碳足迹计算系统</span>
+        <span style="font-size: large">中小企业碳排放智能分析系统</span>
       </template>
       <template #back-icon>
         <icon-left style="transform: scale(1.2)"/>

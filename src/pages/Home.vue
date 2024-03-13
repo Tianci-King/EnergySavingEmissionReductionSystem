@@ -122,19 +122,19 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "石油和天然气开采业",
-        img:"public/trade/石油天然气开采业.jpg",
+        img:"/trade/石油天然气开采业.jpg",
       },
       {
         name: "煤炭开采和洗选业",
-        img:"public/trade/煤炭开采和洗选业.jpg",
+        img:"/trade/煤炭开采和洗选业.jpg",
       },
       {
         name: "电力、热力的生产和供应业",
-        img:"public/trade/电力、热力的生产和供应业.png",
+        img:"/trade/电力、热力的生产和供应业.png",
       },
       {
         name: "燃气生产和供应业",
-        img:"public/trade/燃气生产和供应业.jpg",
+        img:"/trade/燃气生产和供应业.jpg",
       }
     ]
   },
@@ -143,27 +143,27 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "农副食品加工业",
-        img:"public/trade/农副食品加工业.jpg",
+        img:"/trade/农副食品加工业.jpg",
       },
       {
         name: "饮料制造业",
-        img:"public/trade/饮料制造业.jpg",
+        img:"/trade/饮料制造业.jpg",
       },
       {
         name: "烟草制品业",
-        img:"public/trade/烟草制品业.jpg",
+        img:"/trade/烟草制品业.jpg",
       },
       {
         name: "纺织服装、鞋、帽制造业",
-        img:"public/trade/纺织服装、鞋、帽制造业.jpg",
+        img:"/trade/纺织服装、鞋、帽制造业.jpg",
       },
       {
         name: "皮革、毛皮、羽毛(绒)及其制品业",
-        img:"public/trade/皮革、毛皮、羽毛(绒)及其制品业.jpg",
+        img:"/trade/皮革、毛皮、羽毛(绒)及其制品业.jpg",
       },
       {
         name: "木材加工及木、竹、藤、棕、草制品业",
-        img:"public/trade/木材加工及木、竹、藤、棕、草制品业.jpg",
+        img:"/trade/木材加工及木、竹、藤、棕、草制品业.jpg",
       }
     ]
   },
@@ -172,15 +172,15 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "交通运输、仓储及邮电通迅业",
-        img:"public/trade/交通运输、仓储及邮电通迅业.jpg",
+        img:"/trade/交通运输、仓储及邮电通迅业.jpg",
       },
       {
         name: "批发和零售贸易业、餐饮业",
-        img:"public/trade/批发和零售贸易业、餐饮业.jpg",
+        img:"/trade/批发和零售贸易业、餐饮业.jpg",
       },
       {
         name: "其他服务业",
-        img:"public/trade/其他服务业.jpg",
+        img:"/trade/其他服务业.jpg",
       }
     ]
   },
@@ -189,7 +189,7 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "农林牧渔水利业",
-        img:"public/trade/农林牧渔水利业.png",
+        img:"/trade/农林牧渔水利业.png",
       }
     ]
   },
@@ -198,7 +198,7 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "建筑行业",
-        img:"public/trade/建筑业.jpg",
+        img:"/trade/建筑业.jpg",
       }
     ]
   },
@@ -207,19 +207,19 @@ const tradeList:Trade[]=[
     children:[
       {
         name: "黑色金属矿采选业",
-        img:"public/trade/黑色金属矿采选业.jpg",
+        img:"/trade/黑色金属矿采选业.jpg",
       },
       {
         name: "有色金属矿采选业",
-        img:"public/trade/有色金属矿采选业.jpg",
+        img:"/trade/有色金属矿采选业.jpg",
       },
       {
         name: "非金属矿采选业",
-        img:"public/trade/非金属矿采选业.jpg",
+        img:"/trade/非金属矿采选业.jpg",
       },
       {
         name: "其他采矿业",
-        img:"public/trade/其他采矿业.jpg",
+        img:"/trade/其他采矿业.jpg",
       }
     ]
   }
@@ -259,39 +259,39 @@ const menuList = [
 const latitudeList = [
   {
     name: "固定燃烧",
-    img:"public/固定燃烧.png",
+    img:"/固定燃烧.png",
   },
   {
     name: "移动燃烧",
-    img:"public/移动燃烧.png",
+    img:"/移动燃烧.png",
   },
   {
     name: "电热间接排放",
-    img:"public/电热间接排放.png",
+    img:"/电热间接排放.png",
   },
   {
     name: "能源加工转换",
-    img:"public/能源加工转换.png",
+    img:"/能源加工转换.png",
   },
   {
     name: "工艺排放",
-    img:"public/工艺排放.png",
+    img:"/工艺排放.png",
   },
   {
     name: "差旅通勤",
-    img:"public/差旅通勤.png",
+    img:"/差旅通勤.png",
   },
   {
     name: "新能源减排",
-    img:"public/新能源减排.png",
+    img:"/新能源减排.png",
   },
   {
     name: "土地利用碳汇",
-    img:"public/土地利用碳汇.png",
+    img:"/土地利用碳汇.png",
   },
   {
     name: "农林牧渔业",
-    img:"public/农林牧渔业.png",
+    img:"/农林牧渔业.png",
   }
 ];
 
