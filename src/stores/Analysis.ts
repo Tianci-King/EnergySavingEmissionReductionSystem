@@ -226,6 +226,46 @@ const analysisStore = defineStore(
             ]
         })
 
+        const pieOption = ref({
+            legend: {
+                padding:30,
+                bottom:9,
+                borderRadius:50
+            },
+            series: [
+                {
+                    type: 'pie',
+                    selectedMode: 'single',
+                    radius: [0, '40%'],
+                    label: {
+                        position: 'inner',
+                        fontSize: 14
+                    },
+                    emptyCircleStyle:{
+                        color: 'rgb(123, 206, 238)'
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: []
+                },
+                {
+                    type: 'pie',
+                    radius: ['45%', '60%'],
+                    padAngle: 5,
+                    itemStyle: {
+                        borderRadius: "50%",
+                    },
+                    data: [
+                        { value: 71900, name: '碳排放成本'},
+                        { value: 84000, name: '碳汇收益'},
+                        { value: 12100, name: '碳成本净值' },
+                    ]
+                }
+
+            ]
+        })
+
         const setSelectkey = (value: string) => {
             selectKey.value = value;
         }
@@ -267,6 +307,10 @@ const analysisStore = defineStore(
             data33.value = value;
         }
 
+        const setPieOption = (value: any) => {
+            pieOption.value = value;
+        }
+
         return {
             selectKey,
             setSelectkey,
@@ -282,6 +326,10 @@ const analysisStore = defineStore(
             setData2,
             data31,data32,data33,
             setData31,setData32,setData33,
+            sankeyData,
+            setSankeyData,
+            pieOption,
+            setPieOption
         }
     },
     {

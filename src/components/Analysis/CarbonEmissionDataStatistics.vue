@@ -55,7 +55,7 @@
 
 <template>
  <div>
-   <h1 class="h1">碳排放数据统计</h1>
+   <h1 class="h1">碳排放管理仪表盘</h1>
    <div class="content-box">
     <div class="cardDiv">
       <result-card

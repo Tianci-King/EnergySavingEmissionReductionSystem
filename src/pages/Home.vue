@@ -35,7 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   gap:20px;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-content: space-around;
   height: 85%;
 }

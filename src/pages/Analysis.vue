@@ -37,6 +37,12 @@
   <div class="real-content" style="flex-direction: column" v-if="selectKey === '3'">
     <PRE style="width: 100%;"></PRE>
   </div>
+  <div class="real-content" style="flex-direction: column" v-if="selectKey === '4'">
+    <CarbonEmissionPathAnalysis></CarbonEmissionPathAnalysis>
+  </div>
+  <div class="real-content" style="flex-direction: column" v-if="selectKey === '5'">
+    <CarbonEmissionCostBenefitPortrait></CarbonEmissionCostBenefitPortrait>
+  </div>
 </div>
 </template>
 
@@ -49,6 +55,8 @@ import DEA from "@/components/Analysis/DEA.vue";
 import PRE from "@/components/Analysis/PRE.vue";
 
 import AnalysisStore from "@/stores/Analysis.ts";
+import CarbonEmissionPathAnalysis from "@/components/Analysis/CarbonEmissionPathAnalysis.vue";
+import CarbonEmissionCostBenefitPortrait from "@/components/Analysis/CarbonEmissionCostBenefitPortrait.vue";
 
 const useAnalysisStore = AnalysisStore();
 
