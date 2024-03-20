@@ -59,23 +59,23 @@
    <div class="content-box">
     <div class="cardDiv">
       <result-card
-          :result-card-props="{name:'总CO2',value:13640,compare:30}"
+          :result-card-props="{name:'总CO2',value:cardData[0].sum,compare:cardData[0].percent}"
           class="firstCard"
       >
       </result-card>
       <div style="line-height: 100px;font-size: xx-large;color: rgb(97, 188, 137);user-select: none;padding-top: 1vw;padding-left: 1vw">》</div>
       <result-card
-          :result-card-props="{name:'CO2',value:10250,compare:-30}"
+          :result-card-props="{name:'CO2',value:cardData[1].sum,compare:cardData[1].percent}"
           class="resultCard"
       >
       </result-card>
       <result-card
-          :result-card-props="{name:'CH4',value:560,compare:0}"
+          :result-card-props="{name:'CH4',value:cardData[2].sum,compare:cardData[2].percent}"
           class="resultCard"
       >
       </result-card>
       <result-card
-          :result-card-props="{name:'N2O',value:2650,compare:20}"
+          :result-card-props="{name:'N2O',value:cardData[3].sum,compare:cardData[3].percent}"
           class="resultCard"
       >
       </result-card>
@@ -107,11 +107,19 @@
 <script setup lang="ts">
 
 import Chart from "@/components/Analysis/chart.vue";
-import {ref, toRefs} from "vue";
+import {onMounted, ref, toRefs} from "vue";
 import ResultCard from "@/components/Analysis/ResultCard.vue";
 import AnalysisStore from "@/stores/Analysis.ts";
+import tableService from "@/services/tableservice";
 
 const useAnalysisStore = AnalysisStore();
+
+onMounted( async () => {
+  const res = await tableService.card();
+  // useAnalysisStore.setCardData(res.data);
+});
+
+const { cardData } = toRefs(useAnalysisStore);
 
 const pieOption=ref({})
 const {pieData} = toRefs(useAnalysisStore.data1);
@@ -173,7 +181,7 @@ const {pieData: pieData22} = toRefs(useAnalysisStore.data32);
 const {pieData: pieData23} = toRefs(useAnalysisStore.data33);
 const binOption1 = ref({
   title: {
-    text:'生产过程直接排放',
+    text:'范围一',
     left: 'center',
   },
   tooltip: {
@@ -184,7 +192,7 @@ const binOption1 = ref({
   },
   series: [
     {
-      name: '生产过程直接排放',
+      name: '范围一',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -209,7 +217,7 @@ const binOption1 = ref({
 
 const binOption2 = ref({
   title: {
-    text:'间接能源消耗排放',
+    text:'范围二',
     left: 'center',
   },
   tooltip: {
@@ -220,7 +228,7 @@ const binOption2 = ref({
   },
   series: [
     {
-      name: '间接能源消耗排放',
+      name: '范围三',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
@@ -245,7 +253,7 @@ const binOption2 = ref({
 
 const binOption3 = ref({
   title: {
-    text:'碳减排',
+    text:'范围三',
     left: 'center',
   },
   tooltip: {
@@ -256,7 +264,7 @@ const binOption3 = ref({
   },
   series: [
     {
-      name: '碳减排',
+      name: '范围三',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,

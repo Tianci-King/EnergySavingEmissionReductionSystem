@@ -40,8 +40,8 @@ const sankeyOption = ref({
       </div>
 
       <h1 class="h2">碳排放路径分析桑基图</h1>
-      <div style="width: 100%;display: flex;justify-content: space-around;flex-direction: column">
-        <div class="chartDiv" style="width: 100%">
+      <div style="width: 100%;display: flex;flex-direction: column">
+        <div class="chartDiv">
           <chart :option="sankeyOption" style="margin-left: 5%"></chart>
         </div>
       </div>
@@ -82,8 +82,9 @@ const sankeyOption = ref({
 .chartDiv{
   margin-top: 20px;
   padding-top:10px;
-  width: 45%;
-  height: 450px;
+  
+  width: 100%;
+  height: 480px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
   display: flex;

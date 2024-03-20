@@ -6,6 +6,29 @@ const analysisStore = defineStore(
         const selectKey = ref("1");
 
         //统计
+        const cardData = ref([
+            {
+                sum: 13640,
+                abovePeer: "高于同行",
+                percent: 30
+              },
+              {
+                sum: 10250,
+                abovePeer: "低于同行",
+                percent: -30
+              },
+              {
+                sum: 560,
+                abovePeer: "与同行持平",
+                percent: 0
+              },
+              {
+                sum: 13640,
+                abovePeer: "高于同行",
+                percent: 30
+              },
+        ]);
+
         const data1 = ref({
             pieData: [
                 { value: 40, name: '固定燃烧' },
@@ -90,7 +113,7 @@ const analysisStore = defineStore(
         });
 
         //预测
-        const detectData = ref({
+        const detectData = ref({  //
             legendData: ["固定燃烧","移动燃烧","电热间排放","能源加工转换","差旅通勤","新能源减排","土地利用碳汇","农林牧渔业"],
             xAxisData: [1,2,3,4,5,6,7,8,9,10],
             value: [
@@ -105,7 +128,7 @@ const analysisStore = defineStore(
             ]
         });
 
-        const sankeyData = ref({
+        const sankeyData = ref({  //桑基图
             "data": [
                 {
                     "name": "柴油"
@@ -226,7 +249,7 @@ const analysisStore = defineStore(
             ]
         })
 
-        const pieOption = ref({
+        const pieOption = ref({ //碳排放成本收益画像
             legend: {
                 padding:30,
                 bottom:9,
@@ -311,6 +334,10 @@ const analysisStore = defineStore(
             pieOption.value = value;
         }
 
+        const setCardData = (value: any) => {
+            cardData.value = value;
+        }
+
         return {
             selectKey,
             setSelectkey,
@@ -329,7 +356,9 @@ const analysisStore = defineStore(
             sankeyData,
             setSankeyData,
             pieOption,
-            setPieOption
+            setPieOption,
+            cardData,
+            setCardData
         }
     },
     {

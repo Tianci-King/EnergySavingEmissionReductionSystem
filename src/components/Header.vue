@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import {useRouter} from "vue-router";
 import Latitude from "@/stores/Latitude.ts";
-import formService from "@/services/FormService.ts";
+import formService from "@/services/formService.ts";
 import AnalysisStore from "@/stores/Analysis.ts";
 
 const router=useRouter();
@@ -113,13 +113,13 @@ const submit = async () => {
     "农林牧渔业": parseFloat(calculateEmission(useLatitude.data9)),
   }
 
-  const res = await formService.submitForm(data);
-
   useAnalysisStore.setData1(res.data[0]);
   useAnalysisStore.setData2(res.data[1]);
   useAnalysisStore.setData31(res.data[2]);
   useAnalysisStore.setData32(res.data[3]);
   useAnalysisStore.setData33(res.data[4]);
+
+  const res = await formService.submitForm(data);
 
   await router.push("/analysis");
 }

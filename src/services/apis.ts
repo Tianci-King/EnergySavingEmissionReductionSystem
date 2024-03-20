@@ -12,6 +12,7 @@ const apis = {
 
     //predict
     detect: "/detect",
+    card: "/card",
 };
 
 export default apis;

@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {onMounted, ref, toRefs} from "vue";
 import Chart from "@/components/Analysis/chart.vue";
 import tableService from "@/services/tableservice.ts";
 import analysisStore from "@/stores/Analysis.ts";
+import adviceStore from "@/stores/Advice";
 
 const useAnalysisStore = analysisStore();
+const useAdviceStore = adviceStore();
+
+const { advice1 } = toRefs(useAdviceStore);
 
 onMounted(async () => {
+  console.log(advice1.value);
   const res = await tableService.detect();
-  console.log(res.data);
   useAnalysisStore.setDetectData(res.data);
 })
 
@@ -269,43 +273,24 @@ pieData.value = `碳排放成本\n71900 ${(71900/(84000+71900+12100)*100).toFixe
   <div>
     <h1 class="h1">碳排放数据预测</h1>
     <div class="content-box">
+      <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
+        <a-card title="Arco Card">
+          <a-card v-for="adviceItem in advice1" :style="{ marginBottom: '20px' }" title= "1">
+            <template #extra>
+              <a-link></a-link>
+            </template>
+            {{ adviceItem }}
+          </a-card>
+        </a-card>
+      </div>
+
       <div style="width: 100%;display: flex;justify-content: space-around;flex-direction: column">
         <div class="chartDiv" style="width: 100%">
           <chart style="display: flex;justify-content: center" :option="stackOption"></chart>
         </div>
         <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large;padding: 20px 20px 20px 20px">
-          <h3>智能分析</h3>
-          <p>上图展示了prophet预测模型的拟合预测图。</p>
-          <p>一、总体数据趋势分析根据预测结果，按照现有排放策略未来12个月公司碳排放数据将呈现波动趋势，产生总量为723501吨的碳排放。</p>
-          <p>二、各项数据分析在各项预测数据中，各项排放量均呈波动趋势。三、智能建议：公司在各子项的排放具有一个稳定的预期，可以针对性的开展减排。</p>
         </div>
       </div>
-      <div style="width: 100%;display: flex;justify-content: space-around;">
-        <div style="width: 45%">
-          <h1 class="h1">碳排放路径分析</h1>
-          <div class="chartDiv" style="width: 100%">
-            <chart style="display: flex;justify-content: center" :option="sankeyOption"></chart>
-          </div>
-          <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large;padding: 20px 20px 20px 20px">
-            <h3>碳排放路径分析：</h3>
-            <p>如图所示，生产过程直接排放中最大的碳排放流动去向是固定燃烧，固定燃烧中最大的碳排放流动去向是精洗煤。通过链路分析，发现生产过程直接排放-固定烷烧-精洗煤是一条关键的排放链路。</p>
-          </div>
-        </div>
-        <div style="width: 45%">
-          <h1 class="h1">碳排放成本-收益画像</h1>
-          <div class="chartDiv" style="width: 100%">
-            <chart style="display: flex;justify-content: center" :option="pieOption" :size="{width:'70%',height:'100%'}"></chart>
-            <div style="width: 30%;white-space: pre-wrap;font-size: x-large;padding-top: 40px">
-              {{pieData}}
-            </div>
-          </div>
-          <div style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;font-size: large;padding: 20px 20px 20px 20px">
-            <h3>碳排放成本-收益画像：</h3>
-            <p>按照50元/吨的碳排放权交易价格并基于历史数据设置碳排放限额，本月产生碳排放成本71900元，碳汇收益 84000元，共得碳成本净值12100元。</p>
-          </div>
-        </div>
-      </div>
-      <div style="padding-bottom: 10px"></div>
     </div>
   </div>
 </template>
