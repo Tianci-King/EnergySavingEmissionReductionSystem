@@ -24,6 +24,11 @@
 </style>
 
 <template>
+<a-badge :count="0" style="position: fixed;bottom: 100px;right: 50px;height: 50px;width: 50px;z-index: 2">
+      <a-button @click="openChat" shape="circle" status="normal" type="primary" style="height: 100%;width: 100%">
+        <icon-robot-add style="transform: scale(1.5)"/>
+      </a-button>
+    </a-badge>
 <div style="display: flex;" class="background">
   <div class="sider" style="width: 250px">
     <analysis-menu :handle-click="handleClick"></analysis-menu>
@@ -71,4 +76,7 @@ const handleClick = (e: any) => {
   selectKey.value = e;
   useAnalysisStore.setSelectkey(e);
 };
+const openChat = () => {
+
+}
 </script>
