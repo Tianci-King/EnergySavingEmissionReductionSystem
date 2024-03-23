@@ -98,14 +98,6 @@ const latitudeStore = defineStore(
                 MethaneEmissionsFactors: '',
                 NitrousOxideEmissions: 0,
                 NitrousOxideEmissionsFactors: '',
-            },{
-                kind: '总计',
-                CarbonEmissions: 0,
-                CarbonEmissionsFactors: '',
-                MethaneEmissions: 0,
-                MethaneEmissionsFactors: '',
-                NitrousOxideEmissions: 0,
-                NitrousOxideEmissionsFactors: '',
             }
         ]);
 
@@ -122,16 +114,6 @@ const latitudeStore = defineStore(
             },
             {
                 kind: '柴油',
-                consumption: '',
-                CarbonEmissions: 0,
-                CarbonEmissionsFactors: '',
-                MethaneEmissions: 0,
-                MethaneEmissionsFactors: '',
-                NitrousOxideEmissions: 0,
-                NitrousOxideEmissionsFactors: '',
-            },
-            {
-                kind: '总计',
                 consumption: '',
                 CarbonEmissions: 0,
                 CarbonEmissionsFactors: '',

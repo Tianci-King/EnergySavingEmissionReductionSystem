@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import Chart from "@/components/Analysis/chart.vue";
-import {ref} from "vue";
+import {ref, toRefs} from "vue";
 import analysisStore from "@/stores/Analysis.ts";
+import adviceStore from "@/stores/Advice.ts";
 
 const useAnalysisStore = analysisStore();
+const useAdviceStore = adviceStore();
+
+const { advice2 } = toRefs(useAdviceStore);
 
 const sankeyOption = ref({
   series: {
@@ -23,18 +27,12 @@ const sankeyOption = ref({
     <h1 class="h1">碳排放路径分析</h1>
     <div class="content-box">
       <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
-        <a-card title="Arco Card">
-          <a-card :style="{ marginBottom: '20px' }" title="Inner Card Title">
+        <a-card title="分析方法">
+          <a-card v-for="(adviceItem,index) in advice2" :style="{ marginBottom: '20px' }" :title= "'方法 '+(index+1)">
             <template #extra>
-              <a-link>详细信息</a-link>
+              <a-link></a-link>
             </template>
-            Inner Card Content
-          </a-card>
-          <a-card title="Inner Card Title">
-            <template #extra>
-              <a-link>详细信息</a-link>
-            </template>
-            Inner Card Content
+            {{ adviceItem }}
           </a-card>
         </a-card>
       </div>

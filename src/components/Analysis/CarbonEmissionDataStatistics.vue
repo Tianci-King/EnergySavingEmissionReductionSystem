@@ -115,8 +115,9 @@ import tableService from "@/services/tableservice";
 const useAnalysisStore = AnalysisStore();
 
 onMounted( async () => {
-  const res = await tableService.card();
-  // useAnalysisStore.setCardData(res.data);
+  const { sum } = useAnalysisStore;
+  const res = await tableService.card2(sum);
+  useAnalysisStore.setCardData(res.data);
 });
 
 const { cardData } = toRefs(useAnalysisStore);
@@ -167,9 +168,9 @@ barOption.value = {
   },
   series: [
     {
-      data: [barData.value[0], barData.value[1], barData.value[2], barData.value[3], barData.value[4], barData.value[5], barData.value[6],
+      data: [barData.value[0], barData.value[1], barData.value[2], barData.value[3], barData.value[4], barData.value[5], 
         {value: barData.value[7], itemStyle: {color: 'rgb(97, 188, 137)'}},
-        {value: barData.value[8], itemStyle: {color: 'rgb(97, 188, 137)'}}
+        {value: barData.value[6], itemStyle: {color: 'rgb(97, 188, 137)'}},barData.value[8],
       ],
       type: 'bar'
     }
@@ -228,7 +229,7 @@ const binOption2 = ref({
   },
   series: [
     {
-      name: '范围三',
+      name: '范围二',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,

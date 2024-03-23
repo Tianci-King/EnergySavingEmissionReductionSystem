@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import Chart from "@/components/Analysis/chart.vue";
 import analysisStore from "@/stores/Analysis.ts";
+import adviceStore from "@/stores/Advice";
+import { toRefs } from "vue";
 
 const useAnalysisStore = analysisStore();
+const useAdviceStore = adviceStore();
+
+const { advice3 } = toRefs(useAdviceStore);
 
 </script>
 
@@ -11,18 +16,12 @@ const useAnalysisStore = analysisStore();
     <h1 class="h1">碳排放成本收益画像</h1>
     <div class="content-box">
       <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
-        <a-card title="Arco Card">
-          <a-card :style="{ marginBottom: '20px' }" title="Inner Card Title">
+        <a-card title="分析方法">
+          <a-card v-for="(adviceItem,index) in advice3" :style="{ marginBottom: '20px' }" :title= "'方法 '+(index+1)">
             <template #extra>
-              <a-link>详细信息</a-link>
+              <a-link></a-link>
             </template>
-            Inner Card Content
-          </a-card>
-          <a-card title="Inner Card Title">
-            <template #extra>
-              <a-link>详细信息</a-link>
-            </template>
-            Inner Card Content
+            {{ adviceItem }}
           </a-card>
         </a-card>
       </div>

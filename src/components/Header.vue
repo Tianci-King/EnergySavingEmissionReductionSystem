@@ -48,14 +48,29 @@ function calculateEmissions(data) {
   return [parseFloat(totalCarbonEmissions), parseFloat(totalMethaneEmissions), parseFloat(totalNitrousOxideEmissions)];
 }
 
-function calculateCarbonEmissions(data) {
+function calculateEmissionsSum(data) {
   let totalCarbonEmissions = 0;
+  let totalMethaneEmissions = 0;
+  let totalNitrousOxideEmissions = 0;
 
   data.forEach(item => {
     totalCarbonEmissions += item.CarbonEmissions;
+    totalMethaneEmissions += item.MethaneEmissions;
+    totalNitrousOxideEmissions += item.NitrousOxideEmissions;
   });
 
-  return parseFloat(totalCarbonEmissions);
+  return (parseFloat(totalCarbonEmissions) + parseFloat(totalMethaneEmissions) + parseFloat(totalNitrousOxideEmissions));
+}
+
+function calculateCarbonEmissions(data) {
+  let totalCarbonEmissions = 0.00;
+
+  data.forEach(item => {
+    // console.log(item.CarbonEmissions)
+    totalCarbonEmissions += parseFloat(item.CarbonEmissions);
+  });
+
+  return totalCarbonEmissions;
 }
 
 function calculateCO2EmissionReduction(data) {
@@ -113,15 +128,84 @@ const submit = async () => {
     "农林牧渔业": parseFloat(calculateEmission(useLatitude.data9)),
   }
 
-  useAnalysisStore.setData1(res.data[0]);
-  useAnalysisStore.setData2(res.data[1]);
-  useAnalysisStore.setData31(res.data[2]);
-  useAnalysisStore.setData32(res.data[3]);
-  useAnalysisStore.setData33(res.data[4]);
+  useAnalysisStore.setSum(data);
+
+  // console.log(parseFloat(calculateCarbonEmissions(useLatitude.data61)));
+  // console.log(parseFloat(calculateCarbonEmissions(useLatitude.data62)));
+
+  //console.log((useLatitude.data61[0].CarbonEmissions + useLatitude.data61[1].CarbonEmissions + useLatitude.data61[2].CarbonEmissions +useLatitude.data61[3].CarbonEmissions + useLatitude.data61[4].CarbonEmissions +useLatitude.data61[5].CarbonEmissions + useLatitude.data62[0].CarbonEmissions + useLatitude.data62[1].CarbonEmissions))
+
+
+  useAnalysisStore.setData1({
+      pieData: [
+        { value: parseFloat(calculateEmissionsSum(useLatitude.data1)), name: '固定燃烧'},
+        { value: parseFloat(calculateEmissionsSum(useLatitude.data2)), name: '移动燃烧'},
+        { value: parseFloat(calculateEmissionsSum(useLatitude.data3)), name: '能源加工转换'},
+        { value: parseFloat(calculateEmissionsSum(useLatitude.data4)), name: '电热间排放'},
+        { value: parseFloat(calculateCarbonEmissions(useLatitude.data61))+parseFloat(calculateCarbonEmissions(useLatitude.data62)), name: '差旅通勤'},
+        { value: (parseFloat(calculateCarbonEmissions(useLatitude.data71))+parseFloat(calculateCO2EmissionReduction(useLatitude.data72))+parseFloat(calculateCO2EmissionReduction(useLatitude.data73))+parseFloat(calculateCO2EmissionReduction(useLatitude.data74))+parseFloat(calculateEmissionReduction(useLatitude.data75))+parseFloat(calculateEmissionReduction(useLatitude.data76))+parseFloat(calculateEmissionReduction(useLatitude.data77))+parseFloat(calculateEmissionReduction(useLatitude.data78))), name: '新能源减排'},
+        { value: parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data81))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data82))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data83))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data84)), name: '土地利用碳汇'},
+      ]
+  })
+
+  useAnalysisStore.setData2({
+    optionData: ['总计','固定燃烧', '移动燃烧', '能源加工转换', '电热间排放', '差旅通勤', '新能源减排', '土地利用碳汇', '农林牧渔业'],
+    barData: [
+      (parseFloat(calculateEmissionsSum(useLatitude.data1)) + parseFloat(calculateEmissionsSum(useLatitude.data2)) + parseFloat(calculateEmissionsSum(useLatitude.data3)) + parseFloat(calculateEmissionsSum(useLatitude.data4)) + parseFloat(calculateCarbonEmissions(useLatitude.data61))+parseFloat(calculateCarbonEmissions(useLatitude.data62)) - (parseFloat(calculateCarbonEmissions(useLatitude.data71))+parseFloat(calculateCO2EmissionReduction(useLatitude.data72))+parseFloat(calculateCO2EmissionReduction(useLatitude.data73))+parseFloat(calculateCO2EmissionReduction(useLatitude.data74))+parseFloat(calculateEmissionReduction(useLatitude.data75))+parseFloat(calculateEmissionReduction(useLatitude.data76))+parseFloat(calculateEmissionReduction(useLatitude.data77))+parseFloat(calculateEmissionReduction(useLatitude.data78))) - (parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data81))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data82))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data83))+parseFloat(calculateCarbonSinkEmissionReduction(useLatitude.data84)))),
+      calculateEmissionsSum(useLatitude.data1),
+      calculateEmissionsSum(useLatitude.data2),
+      calculateEmissionsSum(useLatitude.data3),
+      calculateEmissionsSum(useLatitude.data4),
+      calculateCarbonEmissions(useLatitude.data61)+calculateCarbonEmissions(useLatitude.data62),
+      calculateCarbonEmissions(useLatitude.data71)+calculateCO2EmissionReduction(useLatitude.data72)+calculateCO2EmissionReduction(useLatitude.data73)+calculateCO2EmissionReduction(useLatitude.data74)+calculateEmissionReduction(useLatitude.data75)+calculateEmissionReduction(useLatitude.data76)+calculateEmissionReduction(useLatitude.data77)+calculateEmissionReduction(useLatitude.data78),
+      calculateCarbonSinkEmissionReduction(useLatitude.data81)+calculateCarbonSinkEmissionReduction(useLatitude.data82)+calculateCarbonSinkEmissionReduction(useLatitude.data83)+calculateCarbonSinkEmissionReduction(useLatitude.data84),
+      calculateEmission(useLatitude.data9)
+    ]
+  });
+
+  useAnalysisStore.setData31({
+    pieData: [
+      { value: calculateEmissionsSum(useLatitude.data3), name: '能源加工转换'},
+      { value: calculateEmissionsSum(useLatitude.data4), name: '工艺排放'},
+      { value: calculateEmissionsSum(useLatitude.data2), name: '移动燃烧'},
+      { value: calculateEmissionsSum(useLatitude.data1), name: '固定燃烧'}
+    ]
+  });
+
+  useAnalysisStore.setData32({
+        pieData: [
+      { 
+        value: parseFloat(useLatitude.data4[0].CarbonEmissions) + parseFloat(useLatitude.data4[0].MethaneEmissions) + parseFloat(useLatitude.data4[0].NitrousOxideEmissions), 
+        name: '购入电力'
+      },
+      { 
+        value: parseFloat(useLatitude.data4[1].CarbonEmissions) + parseFloat(useLatitude.data4[0].MethaneEmissions) + parseFloat(useLatitude.data4[0].NitrousOxideEmissions), 
+        name: '购入热力'
+      },
+      { 
+        value: parseFloat(useLatitude.data4[2].CarbonEmissions) + parseFloat(useLatitude.data4[0].MethaneEmissions) + parseFloat(useLatitude.data4[0].NitrousOxideEmissions), 
+        name: '售出电力'
+      },
+      { 
+        value: parseFloat(useLatitude.data4[3].CarbonEmissions) + parseFloat(useLatitude.data4[0].MethaneEmissions) + parseFloat(useLatitude.data4[0].NitrousOxideEmissions), 
+        name: '售出热力'
+      },
+    ]
+
+  })
+
+  useAnalysisStore.setData33({
+    pieData: [
+      { value: calculateCarbonEmissions(useLatitude.data61), name: '员工差旅'},
+      { value: calculateCarbonEmissions(useLatitude.data62), name: '员工通勤'},
+    ]
+  })
 
   const res = await formService.submitForm(data);
 
-  await router.push("/analysis");
+  setTimeout(() => {
+    router.push("/analysis");
+  }, 500);
 }
 </script>
 

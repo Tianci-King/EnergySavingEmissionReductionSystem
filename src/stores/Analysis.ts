@@ -3,6 +3,11 @@ import {ref} from "vue";
 
 const analysisStore = defineStore(
     "analysis", () => {
+        const sum = ref();
+        const setSum = (value: any) => {
+            sum.value = value;
+        }
+
         const selectKey = ref("1");
 
         //统计
@@ -31,48 +36,50 @@ const analysisStore = defineStore(
 
         const data1 = ref({
             pieData: [
-                { value: 40, name: '固定燃烧' },
-                { value: 38, name: '移动燃烧' },
-                { value: 32, name: '电热间排放' },
-                { value: 28, name: '能源加工转换' },
-                { value: 26, name: '差旅通勤' },
-                { value: 36, name: '农林牧鱼业'}
+                { value: 0, name: '固定燃烧' },
+                { value: 0, name: '移动燃烧' },
+                { value: 0, name: '电热间排放' },
+                { value: 0, name: '能源加工转换' },
+                { value: 0, name: '差旅通勤' },
+                { value: 0, name: '农林牧鱼业'}
             ]
         });
 
         const data2 = ref({
-            optionData: ['总计排放',
-                '固定燃烧',
-                '移动燃烧',
-                '电热间排放',
-                '能源加工转换',
-                '差旅通勤',
-                '农林牧渔业',
-                '新能源减排',
-                '土地利用碳汇'],
-            barData: [3100, 1200, 300, 200, 900, 300, 200, 100, 100]
+            optionData: [
+            //    '总计排放',
+            //     '固定燃烧',
+            //     '移动燃烧',
+            //     '电热间排放',
+            //     '能源加工转换',
+            //     '差旅通勤',
+            //     '农林牧渔业',
+            //     '新能源减排',
+            //     '土地利用碳汇'
+            ],
+            barData:  []//[3100, 1200, 300, 200, 900, 300, 200, 100, 100]
         });
 
         const data31 = ref({
             pieData: [
-                { value: 7, name: '能源加工转换' },
-                { value: 21, name: '农林牧渔业' },
-                { value: 12, name: '移动燃烧' },
-                { value: 60 , name: '固定燃烧' }
+            //     { value: 7, name: '能源加工转换' },
+            //     { value: 21, name: '工艺排放' },
+            //     { value: 12, name: '移动燃烧' },
+            //     { value: 60 , name: '固定燃烧' }
             ]
         });
 
         const data32 = ref({
             pieData: [
-                { value: 12, name: '电热间排放' },
-                { value: 15, name: '差旅通勤' }
+            //     { value: 12, name: '电热间排放' },
+            //     { value: 15, name: '差旅通勤' }
             ]
         });
 
         const data33 = ref({
             pieData: [
-                { value: 49, name: '新能源减排' },
-                { value: 51, name: '土地利用碳汇' },
+            //     { value: 49, name: '新能源减排' },
+            //     { value: 51, name: '土地利用碳汇' },
             ]
         });
 
@@ -358,7 +365,8 @@ const analysisStore = defineStore(
             pieOption,
             setPieOption,
             cardData,
-            setCardData
+            setCardData,
+            sum,setSum
         }
     },
     {

@@ -274,8 +274,8 @@ pieData.value = `碳排放成本\n71900 ${(71900/(84000+71900+12100)*100).toFixe
     <h1 class="h1">碳排放数据预测</h1>
     <div class="content-box">
       <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
-        <a-card title="Arco Card">
-          <a-card v-for="adviceItem in advice1" :style="{ marginBottom: '20px' }" title= "1">
+        <a-card title="分析方法">
+          <a-card v-for="(adviceItem,index) in advice1" :style="{ marginBottom: '20px' }" :title= "'方法 '+(index+1)">
             <template #extra>
               <a-link></a-link>
             </template>

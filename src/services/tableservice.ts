@@ -8,7 +8,7 @@ export default class tableService {
                 "Content-Type": "application/json",
             },
             method: "get",
-            url: "http://192.168.31.92:30000" + apis.table,
+            url: "http://192.168.31.129:30000" + apis.table,
         });
     }
 
@@ -18,7 +18,7 @@ export default class tableService {
                 "Content-Type": "application/json",
             },
             method: "get",
-            url: "http://192.168.31.92:30000" + apis.chart,
+            url: "http://192.168.31.129:30000" + apis.chart,
         });
     }
 
@@ -28,17 +28,18 @@ export default class tableService {
                 "Content-Type": "application/json",
             },
             method: "get",
-            url: "http://192.168.31.92:30000" + apis.detect,
+            url: "http://192.168.31.129:30000" + apis.detect,
         });
     }
     
-    static async card() {
+    static async card2(data) {
         return request({
             "headers": {
                 "Content-Type": "application/json",
             },
             method: "post",
-            url: "http://192.168.31.92:30000" + apis.card,
+            url: "http://192.168.31.129:30000" + apis.card,
+            data: data
         });
     }
 }
