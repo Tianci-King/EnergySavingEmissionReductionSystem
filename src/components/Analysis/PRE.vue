@@ -271,19 +271,18 @@ pieData.value = `碳排放成本\n71900 ${(71900/(84000+71900+12100)*100).toFixe
 
 <template>
   <div>
-    <h1 class="h1">碳排放数据预测</h1>
+    <h1 class="h1">碳排放预测性分析</h1>
     <div class="content-box">
       <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
-        <a-card title="分析方法">
-          <a-card v-for="(adviceItem,index) in advice1" :style="{ marginBottom: '20px' }" :title= "'方法 '+(index+1)">
+          <a-card v-for="(adviceItem,index) in advice1" :style="{ marginBottom: '20px' }" title= "分析方法" style="font-size: large;font-family: sans-serif;">
             <template #extra>
               <a-link></a-link>
             </template>
             {{ adviceItem }}
           </a-card>
-        </a-card>
       </div>
-
+      
+      <h1 class="h2">碳排放预测折线图</h1>
       <div style="width: 100%;display: flex;justify-content: space-around;flex-direction: column">
         <div class="chartDiv" style="width: 100%">
           <chart style="display: flex;justify-content: center" :option="stackOption"></chart>

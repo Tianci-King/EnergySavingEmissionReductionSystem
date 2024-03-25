@@ -7,12 +7,15 @@ const apis = {
     front: "/front",
 
     //DEA
-    table: "/DEA_Table",
+    table1: "/DEA_table1",
+    table2: "/DEA_table2",
     chart: "/DEA_fig1",
 
     //predict
     detect: "/detect",
     card: "/card2",
+
+    robot: "/robot",
 };
 
 export default apis;

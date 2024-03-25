@@ -24,20 +24,19 @@ const sankeyOption = ref({
 
 <template>
   <div>
-    <h1 class="h1">碳排放路径分析</h1>
+    <h1 class="h1">碳足迹</h1>
     <div class="content-box">
       <div style="margin-top:2vw;margin-left: 10px;margin-right:10px;display: flex;flex-direction: column;">
-        <a-card title="分析方法">
-          <a-card v-for="(adviceItem,index) in advice2" :style="{ marginBottom: '20px' }" :title= "'方法 '+(index+1)">
+
+          <a-card v-for="(adviceItem,index) in advice2" :style="{ marginBottom: '20px' }" title= "分析方法" style="font-size: large;font-family: sans-serif;">
             <template #extra>
               <a-link></a-link>
             </template>
             {{ adviceItem }}
-          </a-card>
         </a-card>
       </div>
 
-      <h1 class="h2">碳排放路径分析桑基图</h1>
+      <h1 class="h2">碳足迹路径分析桑基图</h1>
       <div style="width: 100%;display: flex;flex-direction: column">
         <div class="chartDiv">
           <chart :option="sankeyOption" style="margin-left: 5%"></chart>

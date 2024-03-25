@@ -2,7 +2,7 @@ import axios from "axios";
 
 const request = (config: object) => {
     const instance = axios.create({
-        timeout: 1000
+        timeout: 20000
     });
 
     return instance(config);

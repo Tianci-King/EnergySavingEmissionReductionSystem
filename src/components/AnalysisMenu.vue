@@ -99,12 +99,12 @@
       <span style="font-size: x-large;font-weight: bold;color: #252525" >
         数据分析
       </span>
-      <a-menu-item  class="menuItem" key="1"><icon-apps />碳排管理仪表盘</a-menu-item>
-      <a-menu-item  class="menuItem" key="2"><icon-apps />碳排数据包络分析</a-menu-item>
-      <a-menu-item  class="menuItem" key="3"><icon-apps />碳排数据预测</a-menu-item>
+      <a-menu-item  class="menuItem" key="1"><icon-apps />碳排放描述性分析</a-menu-item>
+      <a-menu-item  class="menuItem" key="2"><icon-apps />碳排放诊断性分析</a-menu-item>
+      <a-menu-item  class="menuItem" key="3"><icon-apps />碳排放预测性分析</a-menu-item>
       <a-menu-item  class="menuItemSpecial" disabled><icon-robot-add style="color: #252525"/>CarbonGPT</a-menu-item>
-      <a-menu-item  class="menuItem" key="4"><icon-apps />碳排路径分析</a-menu-item>
-      <a-menu-item  class="menuItem" key="5"><icon-apps />碳排收益画像</a-menu-item>
+      <a-menu-item  class="menuItem" key="4"><icon-apps />碳足迹</a-menu-item>
+      <a-menu-item  class="menuItem" key="5"><icon-apps />碳排放收益画像</a-menu-item>
     </a-menu-item-group>
   </a-menu>
 </template>

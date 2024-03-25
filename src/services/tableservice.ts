@@ -2,13 +2,23 @@ import apis from "@/services/apis.ts";
 import request from "@/services/request.ts"
 
 export default class tableService {
-    static async table() {
+    static async table1() {
         return request({
             "headers": {
                 "Content-Type": "application/json",
             },
             method: "get",
-            url: "http://192.168.31.129:30000" + apis.table,
+            url: "http://192.168.31.129:30000" + apis.table1,
+        });
+    }
+
+    static async table2() {
+        return request({
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            method: "get",
+            url: "http://192.168.31.129:30000" + apis.table2,
         });
     }
 
@@ -39,6 +49,17 @@ export default class tableService {
             },
             method: "post",
             url: "http://192.168.31.129:30000" + apis.card,
+            data: data
+        });
+    }
+
+    static async robot(data) {
+        return request({
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            method: "post",
+            url: "http://192.168.31.129:30000" + apis.robot,
             data: data
         });
     }

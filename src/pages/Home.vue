@@ -259,39 +259,39 @@ const menuList = [
 const latitudeList = [
   {
     name: "固定燃烧",
-    img:"/固定燃烧.png",
+    img:"/固定燃烧.jpg",
   },
   {
     name: "移动燃烧",
-    img:"/移动燃烧.png",
+    img:"/移动燃烧.jpg",
   },
   {
     name: "电热间接排放",
-    img:"/电热间接排放.png",
+    img:"/电热间接排放.jpg",
   },
   {
     name: "能源加工转换",
-    img:"/能源加工转换.png",
+    img:"/能源加工转换.jpg",
   },
   {
     name: "工艺排放",
-    img:"/工艺排放.png",
+    img:"/工艺排放.jpg",
   },
   {
     name: "差旅通勤",
-    img:"/差旅通勤.png",
+    img:"/差旅通勤.jpg",
   },
   {
     name: "新能源减排",
-    img:"/新能源减排.png",
+    img:"/新能源减排.jpg",
   },
   {
     name: "土地利用碳汇",
-    img:"/土地利用碳汇.png",
+    img:"/土地利用碳汇.jpg",
   },
   {
     name: "农林牧渔业",
-    img:"/农林牧渔业.png",
+    img:"/农林牧渔业.jpg",
   }
 ];
 

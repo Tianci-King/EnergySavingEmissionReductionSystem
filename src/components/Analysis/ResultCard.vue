@@ -62,9 +62,9 @@ background: rgb(183, 128, 255);
 <div class="outer">
   <div class="smallDiv" :class="backgroundColor"><span v-show="resultCardProps.name!=='总CO2'">{{resultCardProps.name}}</span></div>
   <div style="margin-top: 10px;font-size: large;">{{resultCardProps.name}}排放</div>
-  <div style="margin-top: 20px;"><span style="font-size:x-large;font-weight: bold">{{resultCardProps.value}}</span>万吨</div>
+  <div style="margin-top: 20px;"><span style="font-size:x-large;font-weight: bold">{{resultCardProps.value.toFixed(2)}}</span>万吨</div>
   <div style="margin-top: 10px" class="line" :class="lineClass"></div>
-  <div :class="fontClass" style="font-size: xx-small">{{compareText}} <span style="float: right;margin-right: 10px">{{resultCardProps.compare}}%</span></div>
+  <div :class="fontClass" style="font-size: xx-small">{{compareText}} <span style="float: right;margin-right: 10px">{{resultCardProps.compare.toFixed(2)}}%</span></div>
 </div>
 </template>
 

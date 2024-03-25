@@ -84,24 +84,19 @@ const analysisStore = defineStore(
         });
 
         //DEA
-        const data = ref([
-            {
-                decision: 1,
-                technicalBenefit: 1,
-                economiesOfScale: 1,
-                comprehensiveBenefits: 1,
-                validity: "DEA强有效",
-                Kind: "规模报酬固定"
-            },
-        ]);
+        const data = ref({
+            projections: []
+        });
+        
+        const dataTable = ref([]);
 
         const radarData = ref({
             indicator: [
-                { name: '2023-1', max: 1 },
-                { name: '2023-2', max: 1 },
-                { name: '2023-3', max: 1 },
-                { name: '2023-4', max: 1 },
-                { name: '2023-5', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
             ],
             data: [
                 {
@@ -115,6 +110,30 @@ const analysisStore = defineStore(
                 {
                     value: [0.2, 0.8, 0.4, 0.6, 0.1],
                     name: '综合效益'
+                },
+            ]
+        });
+
+        const radarData2 = ref({
+            indicator: [
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+                { name: '', max: 1 },
+            ],
+            data: [
+                {
+                    value: [0.9,0.7,0.2,0.4,0.1],
+                    name: ''
+                },
+                {
+                    value: [0.3, 0.7, 0.1, 0.9, 0.5],
+                    name: ''
+                },
+                {
+                    value: [0.2, 0.8, 0.4, 0.6, 0.1],
+                    name: ''
                 },
             ]
         });
@@ -308,6 +327,10 @@ const analysisStore = defineStore(
             radarData.value = value;
         }
 
+        const setRadarData2 = (value: any) => {
+            radarData2.value = value;
+        }
+
         const setDetectData = (value: any) => {
             detectData.value = value;
 
@@ -345,13 +368,17 @@ const analysisStore = defineStore(
             cardData.value = value;
         }
 
+        const setDataTable = (value: any) => {
+            dataTable.value = value;
+        }
+
         return {
             selectKey,
             setSelectkey,
             data,
             setData,
-            radarData,
-            setRadarData,
+            radarData,radarData2,
+            setRadarData,setRadarData2,
             detectData,
             setDetectData,
             data1,
@@ -366,7 +393,8 @@ const analysisStore = defineStore(
             setPieOption,
             cardData,
             setCardData,
-            sum,setSum
+            sum,setSum,
+            dataTable,setDataTable
         }
     },
     {

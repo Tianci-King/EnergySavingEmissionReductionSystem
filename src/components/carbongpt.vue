@@ -21,16 +21,26 @@
   </template>
 
   <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, toRefs } from 'vue';
+  import tableService from '@/services/tableservice';
+  import analysisStore from '@/stores/Analysis.ts';
 
-  const resList = ref([]);
-  const nowList = ref([]);
-  const isShow = ref(false);
+  const resList = ref(["分析正在生成中...."]);
+  const nowList = ref(["分析正在生成中...."]);
+  const isShow = ref(true);
 
-  onMounted(() => {
+  const useAnalysisStore = analysisStore();
+
+  onMounted( async () => {
+    const { selectKey } = toRefs(useAnalysisStore);
+    const res = await tableService.robot(parseInt(selectKey.value));
+
+    console.log(res.data);
+
     //["我们需要降低固定燃烧的消耗！","您的土地碳汇有待提升。", "您需要做出...的修改！"]
-    resList.value = ["我是智能机器“小智”，根据您的企业数据，我分析得出您需要降\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwsefsdfsdf低...决策导向的话！","您的土地碳汇有待提升。","您需要...对此...决策","您需要做出...的修改！"];
+    resList.value = res.data;
 
+    isShow.value = false;
     setTimeout(() => {
       isShow.value = true;
     }, 300);

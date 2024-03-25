@@ -51,6 +51,9 @@
 </div>
 
 <Carbongpt v-if="showChat" @quit="quitChat"></Carbongpt>
+<div>
+  <img src="/public/code.jpg" style="position: fixed;bottom: -5%;left: -100px;transform: scale(0.5)">
+</div>
 </template>
 
 <script setup lang="ts">
