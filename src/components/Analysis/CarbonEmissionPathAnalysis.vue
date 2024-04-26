@@ -20,6 +20,7 @@ const sankeyOption = ref({
     links: useAnalysisStore.sankeyData.links
   }
 });
+
 </script>
 
 <template>

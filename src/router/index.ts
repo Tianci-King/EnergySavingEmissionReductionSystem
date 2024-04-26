@@ -20,7 +20,7 @@ const routes: RouteRecordRaw[] = [
 
     },
     {
-        path: "/analysis" ,
+        path: "/Analysis" ,
         component:Analysis,
     },
     {
